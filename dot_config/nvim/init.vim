@@ -24,6 +24,9 @@ Plug 'voldikss/vim-floaterm'
 Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-startify', {'branch': 'center'}
 Plug 'airblade/vim-rooter' " replace with project.nvim soon
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+
 Plug 'neovim/nvim-lspconfig'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'tree-sitter/tree-sitter'
@@ -173,9 +176,9 @@ let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " external config files (in lua)
+luafile ~/.config/nvim/nvim-cmp.lua
 luafile ~/.config/nvim/lsp.lua
 luafile ~/.config/nvim/plugins.lua
-luafile ~/.config/nvim/nvim-cmp.lua
 luafile ~/.config/nvim/adapter-definitions.lua
 
 " Exit Vim if NERDTree is the only window left.

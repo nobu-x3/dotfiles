@@ -1,6 +1,8 @@
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.clangd.setup{}
-require'lspconfig'.gdscript.setup{}
+require('mason').setup()
+require('mason-lspconfig').setup()
+-- require'lspconfig'.pyright.setup{}
+-- require'lspconfig'.gdscript.setup{}
+-- require'lspconfig'.clangd.setup{}
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -33,6 +35,13 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
+-- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+-- local capabilities = vim.lsp.protocol.make_client_capabilties()
+require'lspconfig'.clangd.setup{
+   }
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = { 'pyright', 'rust_analyzer', 'clangd', 'gdscript' }
@@ -42,6 +51,8 @@ for _, lsp in pairs(servers) do
     flags = {
       -- This will be the default in neovim 0.7+
       debounce_text_changes = 150,
-    }
+    },
+    capabilities = capabilities,
+
   }
 end
