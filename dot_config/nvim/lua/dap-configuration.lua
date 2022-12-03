@@ -1,11 +1,10 @@
 local dap = require('dap')
-dap.adapters.cppdbg = {
-  id = 'cppdbg',
-  type = 'executable',
-  command = '/home/nobu/Downloads/cpp/extension/debugAdapters/bin/OpenDebugAD7',
-}
-
-dap.configurations.cpp = {
+dap.configurations.cs = {
+  {
+  type = 'unity',
+  request = 'attach',
+  name = 'Unity Editor',
+  },
   {
     name = "Launch file",
     type = "cppdbg",
@@ -28,4 +27,5 @@ dap.configurations.cpp = {
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
   },
+
 }
