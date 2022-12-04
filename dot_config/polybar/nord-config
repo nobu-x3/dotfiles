@@ -61,7 +61,7 @@ line-size = 3.5
 # if some of them doesn't suit your environment, you can change
 # it from here.
 # network interface, check by `ip link show`
-interface = eno1
+interface = enp3s0:q
 # when the current battery capacity excess this value,
 # the full-capacity format will be displayed.
 battery-full-at = 95
@@ -88,7 +88,7 @@ warn-temperature = 70
 
 # GitHub personal token, generate from https://github.com/settings/tokens/new?scopes=notifications&description=Notifier+for+Polybar
 # where select at least `notifications` option
-github-token = 00ed987a6d7efd532c5b4ca0849c2803228d1b5d
+github-token = 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
 
 # notify module setting
 notify-click-left = xdotool key control+grave

@@ -35,8 +35,8 @@ get_duration() {
 
 }
 
-KEY="62628c16e6247d2c1caf0cb398a3dffa"
-CITY="Agartala"
+KEY="cb2820b2f09e5e9843a483ee3057826e"
+CITY="Warsaw"
 UNITS="metric"
 SYMBOL="°"
 

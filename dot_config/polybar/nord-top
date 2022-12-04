@@ -66,9 +66,9 @@ scroll-down = exec polybar-msg action "#pipewire.hook.2"
 click-left = exec polybar-msg action "#pipewire.hook.3"
 click-right = exec pavucontrol &
 
-[module/kdeconnect]  
-type = custom/script  
-exec = "/home/sourav2k/.config/polybar/scripts/polybar-kdeconnect.sh -d"  
+[module/kdeconnect]
+type = custom/script
+exec = "/home/sourav2k/.config/polybar/scripts/polybar-kdeconnect.sh -d"
 tail = true
 
 
@@ -121,7 +121,7 @@ label-focused-padding = 2
 label-focused-foreground = ${colors.nord7}
 label-focused-underline = ${colors.nord7}
 
-label-unfocused = 
+label-unfocused =
 
 label-urgent = %name%
 label-urgent-foreground = ${colors.urgent}
@@ -209,7 +209,7 @@ headphone-soundcard = ${config.headphone-soundcard}
 
 master-mixer = ${config.master-mixer}
 
-; Format 
+; Format
 format-volume = <ramp-volume> <label-volume>
 format-volume-underline = #fbf1c7
 
@@ -284,7 +284,7 @@ bar-progress-indicator = |
 bar-progress-fill = -
 bar-progress-empty = -
 bar-progress-gradient = true
-bar-progress-foreground-0 = #fbf1c7 
+bar-progress-foreground-0 = #fbf1c7
 bar-progress-foreground-1 = #fbf1c7
 bar-progress-foreground-2 = #fbf1c7
 
@@ -342,8 +342,8 @@ format = <label>
 exec = python3 $HOME/.config/polybar/scripts/spotify_status.py -f '{artist}: {song}'
 format-underline = #b8bb26
 ;control players (optional)
-click-left = playerctl --player=spotify play-pause 
-click-right = playerctl --player=spotify next 
+click-left = playerctl --player=spotify play-pause
+click-right = playerctl --player=spotify next
 click-middle = playerctl --player=spotify previous
 
 [module/onedrive-widget]
@@ -371,4 +371,4 @@ content-background = #fbf1c7
 content-foreground = #282828
 content-padding = 3
 
-click-left = ~/.config/polybar/scripts/rofi_run
+click-left = ~/.config/polybar/scripts/themes/dmenu.rasi
