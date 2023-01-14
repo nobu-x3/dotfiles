@@ -1,0 +1,25 @@
+{
+	"diagnostic.displayByAle": true,
+	"coc.preferences.jumpCommand": "tab drop",
+	"languageserver": {
+		"csharp-ls": {
+			"command": "omnisharp",
+			"filetypes": ["cs"],
+			"rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
+		},
+		"coc-clangd": {
+			"command": "clangd",
+			"rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+			"filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
+		}
+	},
+	"zig.enabled": true,
+	"zig.startUpMessage": true,
+	"zig.path": "zls",
+	"zig.debugLog": false,
+	"coc.source.Omnisharp.enable" : true,
+  "coc.source.Omnisharp.triggerCharacters": ".",
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.3/clangd_15.0.3/bin/clangd",
+  "clangd.checkUpdates": true
+
+}
