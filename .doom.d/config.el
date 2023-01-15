@@ -7,7 +7,9 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Dominik Kurasbediani"
-      user-mail-address "dominik.kurasbediani@gmail.com")
+      user-mail-address "dominik.kurasbediani@gmail.com"
+      projectile-project-search-path '("~/workspace/")
+      )
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -75,9 +77,40 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(map! :n "C-n" nil)
-(map! :n "C-n" #'treemacs)
 (map! :leader "r n" #'lsp-rename)
 (map! :n "] d" #'next-error)
 (map! :n "[ d" #'previous-error)
 (map! :n "g h" #'lsp-clangd-find-other-file)
+(map! :n "g t" nil)
+(map! :n "g T" nil)
+(map! :n "g t" #'tab-next)
+(map! :n "g T" #'tab-previous)
+
+
+
+
+;;; Tree Sitter
+
+(use-package! tree-sitter
+   :hook (prog-mode . turn-on-tree-sitter-mode)
+   :hook (tree-sitter-after-on . tree-sitter-hl-mode)
+   :config
+   (require 'tree-sitter-langs)
+   ;; This makes every node a link to a section of code
+   (setq tree-sitter-debug-jump-buttons t
+         ;; and this highlights the entire sub tree in your code
+         tree-sitter-debug-highlight-jump-region t))
+
+
+(use-package! modern-cpp-font-lock
+                :ensure t)
+
+(after! centaur-tabs
+  :ensure t
+  :config
+        (setq centaur-tabs-mode 'over
+                centaur-tabs-set-icons t
+                centaur-tabs-gray-out-icons 'buffer
+                centaur-tabs-set-modified-marker t
+                centaur-tabs-modifier-marker "•")
+        (centaur-tabs-mode t))

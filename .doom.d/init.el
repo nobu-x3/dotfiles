@@ -191,4 +191,6 @@
 
        :config
        ;;literate
-       (default +bindings +smartparens))
+       (default +bindings +smartparens)
+
+       (add-hook 'c++-mode-hook #'modern-c++-font-lock-mode))
