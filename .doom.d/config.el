@@ -10,7 +10,15 @@
       user-mail-address "dominik.kurasbediani@gmail.com"
       projectile-project-search-path '("~/workspace/")
       )
-
+(setq lsp-clients-clangd-args '("-j=3"
+				"--background-index"
+				"--clang-tidy"
+				"--completion-style=detailed"
+				"--header-insertion=never"
+				"--header-insertion-decorators=0"))
+(after! lsp-clangd (set-lsp-priority! 'clangd 2))
+(setq +format-with-lsp nil)
+(setq clang-format-style "file")
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use

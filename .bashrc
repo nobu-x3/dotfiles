@@ -2,7 +2,8 @@
 # ~/.bashrc
 #
 export PATH="$HOME/.emacs.d/bin:$PATH"
-
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
