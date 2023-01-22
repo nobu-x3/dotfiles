@@ -16,6 +16,7 @@
 				"--completion-style=detailed"
 				"--header-insertion=never"
 				"--header-insertion-decorators=0"))
+(setq flycheck-check-syntax-automatically '(mode-enabled save))
 (after! lsp-clangd (set-lsp-priority! 'clangd 2))
 (setq +format-with-lsp nil)
 (setq clang-format-style "file")
@@ -93,13 +94,25 @@
 (map! :n "g T" nil)
 (map! :n "g t" #'tab-next)
 (map! :n "g T" #'tab-previous)
+(map! :n "g d" #'+lookup/definition)
+(map! :n "g r" #'+lookup/references)
+(map! :n "f f" #'find-file)
+(map! :n "}" nil)
+(map! :n "{" nil)
+(map! :n "}" #'c-end-of-defun)
+(map! :n "{" #'c-beginnin-of-defun)
+(map! :n "C-s" #'lsp-ui-imenu)
+(map! :n "C-e" #'lsp-ui-flycheck-list)
+(map! :n "C-a" #'lsp-ui-sideline-apply-code-actions)
+(map! :n "f f" nil)
+(map! :n "f f" #'consult-grep)
 
 
 
 
 ;;; Tree Sitter
 
-(use-package! tree-sitter
+ (use-package! tree-sitter
    :hook (prog-mode . turn-on-tree-sitter-mode)
    :hook (tree-sitter-after-on . tree-sitter-hl-mode)
    :config

@@ -66,6 +66,7 @@ bindsym $mod+d exec --no-startup-id rofi -show drun -font "Source Code Pro 14"
 
 #start doomemacs
 bindsym $mod+t exec --no-startup-id emacsclient -c -a 'emacs'
+# bindsym $mod+t exec --no-startup-id alacritty -e "nvim"
 
 
 
