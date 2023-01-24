@@ -100,12 +100,14 @@
 (map! :n "}" nil)
 (map! :n "{" nil)
 (map! :n "}" #'c-end-of-defun)
-(map! :n "{" #'c-beginnin-of-defun)
+(map! :n "{" #'c-beginning-of-defun)
 (map! :n "C-s" #'lsp-ui-imenu)
 (map! :n "C-e" #'lsp-ui-flycheck-list)
 (map! :n "C-a" #'lsp-ui-sideline-apply-code-actions)
 (map! :n "f f" nil)
 (map! :n "f f" #'consult-grep)
+(map! :n "C-n" nil)
+(map! :n "C-n" #'+treemacs/toggle)
 
 
 
