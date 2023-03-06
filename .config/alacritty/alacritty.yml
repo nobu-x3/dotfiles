@@ -114,7 +114,7 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     family: Source Code Pro
-    size: 14.0
+    size: 16.0
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -333,7 +333,7 @@ cursor:
     #   - ▇ Block
     #   - _ Underline
     #   - | Beam
-    shape: Block
+    shape: Beam
 
     # Cursor blinking state
     #

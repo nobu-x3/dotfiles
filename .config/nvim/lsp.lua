@@ -33,7 +33,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-a>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-a>', '<cmd>lua vim.lsp.buf.code_action_group()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'cf', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 end
@@ -41,55 +41,6 @@ end
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
--- local capabilities = vim.lsp.protocol.make_client_capabilties()
-
--- require'lspconfig'.clangd.setup{
---    }
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-
--- local filetypes = { "c", "cpp", "objc", "objcpp", "opencl" }
--- local server_config = {
---     -- Sidebar configuration
---     sidebar = {
---         size = 50,
---         position = "topleft",
---         split = "vnew",
---         width = 50,
---         height = 20,
---     },
---     -- floating window configuration. check :help nvim_open_win for options
---     float = {
---         style = "minimal",
---         relative = "cursor",
---         width = 50,
---         height = 20,
---         row = 0,
---         col = 0,
---         border = "rounded",
---     },
---     filetypes = filetypes,
---     init_options = { cache = {
---         directory = vim.fs.normalize "~/.cache/ccls/",
---     } },
---     name = "ccls",
---     cmd = { "ccls" },
---     offset_encoding = "utf-32",
---     root_dir = vim.fs.dirname(
---         vim.fs.find({ "compile_commands.json", "compile_flags.txt", ".git" }, { upward = true })[1]
---     ),
--- }
--- require("ccls").setup {
---     filetypes = filetypes,
---     lsp = {
---         server = server_config,
---         codelens = { enable = true }
---     },
---     on_attach = on_attach
--- }
-
 local servers = {'zls', "pylsp", "sumneko_lua", "clangd"}
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
@@ -101,3 +52,47 @@ for _, lsp in pairs(servers) do
     capabilities = capabilities,
   }
 end
+
+local rt = require("rust-tools")
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+    end,
+  },
+})
+
+-- LSP Diagnostics Options Setup
+local sign = function(opts)
+  vim.fn.sign_define(opts.name, {
+    texthl = opts.name,
+    text = opts.text,
+    numhl = ''
+  })
+end
+
+sign({name = 'DiagnosticSignError', text = ''})
+sign({name = 'DiagnosticSignWarn', text = ''})
+sign({name = 'DiagnosticSignHint', text = ''})
+sign({name = 'DiagnosticSignInfo', text = ''})
+
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    update_in_insert = true,
+    underline = true,
+    severity_sort = false,
+    float = {
+        border = 'rounded',
+        source = 'always',
+        header = '',
+        prefix = '',
+    },
+})
+
+vim.cmd([[
+set signcolumn=yes
+autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+]])

@@ -36,6 +36,10 @@ Plug 'sakhnik/nvim-gdb'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'ldelossa/nvim-ide'
+Plug 'puremourning/vimspector'
+
+" Rust:
+Plug 'simrat39/rust-tools.nvim'
 " Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'd0miKuras/nvim-treesitter-cpp-tools'
 
@@ -191,10 +195,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 luafile ~/.config/nvim/nvim-cmp.lua
 luafile ~/.config/nvim/lsp.lua
 luafile ~/.config/nvim/plugins.lua
-luafile ~/.config/nvim/adapter-definitions.lua
-luafile ~/.config/nvim/gen-def.lua
-luafile ~/.config/nvim/ide.lua
-" luafile ~/.config/nvim/tree-sitter.lua
+" luafile ~/.config/nvim/adapter-definitions.lua
+luafile ~/.config/nvim/tree-sitter.lua
+luafile ~/.config/nvim/vimspector.lua
 
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
