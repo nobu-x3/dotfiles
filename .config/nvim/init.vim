@@ -9,6 +9,7 @@ set hidden
 
 set clipboard=unnamedplus
 set cursorline
+
 :set number
 :augroup numbertoggle
 :  autocmd!
@@ -226,6 +227,7 @@ function! Formatonsave()
   pyf /usr/share/clang/clang-format.py
 endfunction
 autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+let g:rustfmt_autosave = 1
 syntax on
 " indentLine char
 let g:indentLine_char = '│'
@@ -234,3 +236,9 @@ let g:indentLine_char = '│'
 set colorcolumn=81
 set completeopt=menuone,noinsert,noselect
 let g:completion_enable_auto_popup = 1
+if exists("g:neovide")
+    let g:neovide_refresh_rate = 60
+    set guifont=Source\ Code\ Pro:h12
+    let g:neovide_cursor_animation_length = 0.04
+    let g:neovide_cursor_trail_size = 0.2
+endif
