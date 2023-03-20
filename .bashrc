@@ -22,3 +22,4 @@ fi
 export VISUAL="nvim"
 
 alias emacs="emacsclient -c -a 'emacs'"
+. "$HOME/.cargo/env"

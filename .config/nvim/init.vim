@@ -6,7 +6,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set hidden
-
+set foldmethod=syntax
+set foldlevel=99
 set clipboard=unnamedplus
 set cursorline
 
@@ -41,6 +42,8 @@ Plug 'puremourning/vimspector'
 
 " Rust:
 Plug 'simrat39/rust-tools.nvim'
+Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rustfmt'
 " Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'd0miKuras/nvim-treesitter-cpp-tools'
 
