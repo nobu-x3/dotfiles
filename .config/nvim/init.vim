@@ -25,6 +25,7 @@ autocmd BufWritePre * %s/\n\+\%$//e
 " muh plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'vim-airline/vim-airline' " the statusbar
+Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'morhetz/gruvbox' " theme
 Plug 'tpope/vim-commentary'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
@@ -131,7 +132,7 @@ nmap <leader>bl :buffers<cr>:b<space>
 " autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR
 
 " Basic Settings
-colorscheme gruvbox
+colorscheme dracula
 set noshowmode
 set number relativenumber
 
