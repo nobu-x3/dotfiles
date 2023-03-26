@@ -67,6 +67,7 @@ rt.setup(
                 -- Hover actions
                 vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-a>", "<cmd> lua require('rust-tools').hover_actions.hover_actions()<CR>", opts)
                 vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>run", "<cmd> lua require('rust-tools').runnables.runnables()<CR>", opts)
+                vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-.>", "<cmd> RustCodeAction<CR>", opts)
 
             end,
         }
