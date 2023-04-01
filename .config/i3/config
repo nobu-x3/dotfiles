@@ -66,8 +66,9 @@ bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F
 # bindsym $mod+d exec --no-startup-id rofi -show drun -font "Source Code Pro 14"
 
 #start doomemacs
-# bindsym $mod+t exec --no-startup-id emacsclient -c -a '
+bindsym $mod+Shift+T exec --no-startup-id emacsclient -c -a '
 bindsym $mod+t exec --no-startup-id alacritty -e "nvim"
+
 
 
 

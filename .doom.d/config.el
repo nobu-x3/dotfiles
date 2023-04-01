@@ -21,8 +21,8 @@
 (setq +format-with-lsp nil)
 (setq clang-format-style "file")
 
-;; (setq dap-auto-configure-mode t)
-;; (requires 'dap-cpptools)
+(setq dap-auto-configure-mode t)
+(require 'dap-cpptools)
 
 (map! :map dap-mode-map
       :leader
@@ -131,8 +131,8 @@
 (map! :n "g h" #'lsp-clangd-find-other-file)
 (map! :n "g t" nil)
 (map! :n "g T" nil)
-(map! :n "g t" #'tab-next)
-(map! :n "g T" #'tab-previous)
+(map! :n "g t" #'next-buffer)
+(map! :n "g T" #'previous-buffer)
 (map! :n "g d" #'+lookup/definition)
 (map! :n "g r" #'+lookup/references)
 (map! :n "f f" #'find-file)
@@ -142,11 +142,12 @@
 (map! :n "{" #'c-beginning-of-defun)
 (map! :n "C-s" #'lsp-ui-imenu)
 (map! :n "C-e" #'lsp-ui-flycheck-list)
-(map! :n "C-a" #'lsp-ui-sideline-apply-code-actions)
-(map! :n "f f" nil)
-(map! :n "f f" #'consult-grep)
+(map! :n "C-." #'lsp-execute-code-action)
+(map! :n "f g" nil)
+(map! :n "f g" #'consult-grep)
 (map! :n "C-n" nil)
 (map! :n "C-n" #'+treemacs/toggle)
+(map! :n "C-q" #'kill-current-buffer)
 
 
 

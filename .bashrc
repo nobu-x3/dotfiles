@@ -20,6 +20,6 @@ fi
 [[ $- == *i* ]] && . /usr/share/blesh/ble.sh
 
 export VISUAL="nvim"
-alias nvim="neovide"
+# alias nvim="neovide"
 alias emacs="emacsclient -c -a 'emacs'"
 . "$HOME/.cargo/env"

@@ -197,12 +197,11 @@ let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " external config files (in lua)
-lua  require("nvim-cmp")
-lua require("lsp")
-lua require("plugins")
-" luafile ~/.config/nvim/adapter-definitions.lua
-lua require("treesitterconfig")
-lua require("vimspector")
+luafile ~/.config/nvim/nvim-cmp.lua
+luafile ~/.config/nvim/lsp.lua
+luafile ~/.config/nvim/plugins.lua
+luafile ~/.config/nvim/treesitterconfig.lua
+luafile ~/.config/nvim/vimspector.lua
 
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
