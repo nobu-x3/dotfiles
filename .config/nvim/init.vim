@@ -28,17 +28,13 @@ Plug 'vim-airline/vim-airline' " the statusbar
 Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'morhetz/gruvbox' " theme
 Plug 'tpope/vim-commentary'
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'voldikss/vim-floaterm'
 Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-startify', {'branch': 'center'}
-Plug 'airblade/vim-rooter' " replace with project.nvim soon
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'sakhnik/nvim-gdb'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'ldelossa/nvim-ide'
 Plug 'puremourning/vimspector'
 
 " Rust:
@@ -46,9 +42,6 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'rust-lang/rust.vim'
 Plug 'rust-lang/rustfmt'
 Plug 'nvim-treesitter/nvim-treesitter'
-" Plug 'd0miKuras/nvim-treesitter-cpp-tools'
-
-Plug 'ranjithshegde/ccls.nvim'
 
 " nvim-cmp has a lot of dependencies
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -58,28 +51,19 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
-Plug 'ziglang/zig.vim'
-
 " plugins for snippets
 Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
 
 " telescope plugin and its dependencies
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim' " fuzzy finder
 
-" kinda like vim-easymotion
-Plug 'phaazon/hop.nvim'
-" toggleable terminal within neovim
-Plug 'akinsho/nvim-toggleterm.lua'
-
 " brackets
 Plug 'windwp/nvim-autopairs'
 
 " bufferline
 Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons)
-Plug 'akinsho/bufferline.nvim'
 
 " session-manager
 Plug 'Shatur/neovim-session-manager'
