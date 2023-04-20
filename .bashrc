@@ -23,3 +23,6 @@ export VISUAL="nvim"
 # alias nvim="neovide"
 alias emacs="emacsclient -c -a 'emacs'"
 . "$HOME/.cargo/env"
+
+export PATH="$HOME/zig:$PATH"
+export PATH="$HOME/git/zls/zig-out/bin:$PATH"

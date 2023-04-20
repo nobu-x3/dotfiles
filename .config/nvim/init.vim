@@ -43,6 +43,11 @@ Plug 'rust-lang/rust.vim'
 Plug 'rust-lang/rustfmt'
 Plug 'nvim-treesitter/nvim-treesitter'
 
+" Zig:
+Plug 'ziglang/zig.vim'
+Plug 'nvim-lua/completion-nvim'
+Plug 'NTBBloodbath/zig-tools.nvim'
+
 " nvim-cmp has a lot of dependencies
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -52,7 +57,8 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
 " plugins for snippets
-Plug 'hrsh7th/cmp-vsnip'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 " telescope plugin and its dependencies
 Plug 'nvim-lua/popup.nvim'
@@ -218,11 +224,12 @@ let g:rustfmt_autosave = 1
 syntax on
 " indentLine char
 let g:indentLine_char = '│'
+let g:zig_fmt_autosave = 0
 
 " limit at 80 char
 set colorcolumn=81
 set completeopt=menuone,noinsert,noselect
-let g:completion_enable_auto_popup = 1
+" let g:completion_enable_auto_popup = 1
 if exists("g:neovide")
     let g:neovide_refresh_rate = 60
     set guifont=Source\ Code\ Pro:h12
