@@ -26,3 +26,4 @@ alias emacs="emacsclient -c -a 'emacs'"
 
 export PATH="$HOME/zig:$PATH"
 export PATH="$HOME/git/zls/zig-out/bin:$PATH"
+export PATH="$HOME/zls:$PATH"
