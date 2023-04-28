@@ -85,13 +85,14 @@ _open_files_for_editing() {
 # alias pacdiff=eos-pacdiff
 ################################################################################
 
-export PATH="$HOME/.emacs.d/bin:$PATH"
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+eval $(keychain --eval --quiet github)
 
 alias ls='ls --color=auto'
+alias hx='helix'
 PS1='[\u@\h \W]\$ '
 
 export VISUAL="helix"
