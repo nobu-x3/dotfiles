@@ -24,6 +24,5 @@ export VISUAL="nvim"
 alias emacs="emacsclient -c -a 'emacs'"
 . "$HOME/.cargo/env"
 
-export PATH="$HOME/zig:$PATH"
-export PATH="$HOME/git/zls/zig-out/bin:$PATH"
-export PATH="$HOME/zls:$PATH"
+export PATH="$HOME/zig-bootstrap/out/zig-x86_64-linux-gnu-native/bin:$PATH"
+export PATH="$HOME/zls/zig-out/bin:$PATH"
