@@ -19,7 +19,7 @@
 
     # Rebind capslock to escape
         input "type:keyboard" { 
-            xkb_options caps:delete
+            xkb_options caps:backspace
         }
 
     # Include scripts or configs

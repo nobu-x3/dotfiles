@@ -180,7 +180,7 @@ source = { git = "https://github.com/tree-sitter/tree-sitter-json", rev = "73076
 name = "c"
 scope = "source.c"
 injection-regex = "c"
-file-types = ["c"] # TODO: ["h"]
+file-types = ["c", "h"] # TODO: ["h"]
 roots = []
 comment-token = "//"
 language-server = { command = "clangd" }
