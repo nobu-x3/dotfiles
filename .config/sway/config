@@ -90,8 +90,8 @@
 ###          Monitors n shit         ###
 
     # Wallpaper
-        #output * bg ~/Pictures/bliss_windows_night.png fill
-        output * bg #16161d solid_color
+        output * bg ~/Pictures/TokyoNightWallpaper4k.jpg fill
+        #output * bg #16161d solid_color
 
     # NOTE: We are using kanshi to automagically setup screens
     # See https://github.com/emersion/kanshi
@@ -201,9 +201,9 @@
         bindsym XF86MonBrightnessUp exec light -A 5
 
     # Screenshot / share shortcuts
-        bindsym Print exec "grim ~/screenShares/Screenshot-$(date -Iseconds | cut -d'+' -f1).png"
+        bindsym Print exec "grim ~/Pictures/Screenshot-$(date -Iseconds | cut -d'+' -f1).png"
         bindsym $mod+Print exec grim -g "$(slurp)" - | wl-copy
-        bindsym $mod+Shift+Print exec "wf-recorder -a -o eDP-1 -f ~/screenShares/Screenstream-$(date -Iseconds | cut -d'+' -f1).mp4"
+        bindsym $mod+Shift+Print exec "wf-recorder -a -o eDP-1 -f ~/Pictures/Screenstream-$(date -Iseconds | cut -d'+' -f1).mp4"
 
 
 #########  Resizing Containers #########

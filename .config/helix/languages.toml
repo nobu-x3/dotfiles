@@ -186,7 +186,7 @@ comment-token = "//"
 language-server = { command = "clangd" }
 indent = { tab-width = 2, unit = "    " }
 auto-format = true
-formatter = { command = "clang-format", args = ["--style=Google"]}
+formatter = { command = "clang-format", args = ["--style=file:.clang_format"]}
 
 [language.debugger]
 name = "lldb-vscode"
