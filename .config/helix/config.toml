@@ -25,4 +25,7 @@ left = ["mode", "file-name", "file-modification-indicator"]
 center = ["version-control"]
 right = ["diagnostics", "workspace-diagnostics", "position"]
 
-
+[keys.normal]
+C-n = ":n" # open new scrath buffer
+C-a = "code_action" # shows code actions
+C-q = ":bc" # close current buffer
