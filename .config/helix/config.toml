@@ -6,7 +6,7 @@ mouse = false
 cursorline = true
 bufferline = "always"
 completion-replace = true
-completion-trigger-len = 1
+completion-trigger-len = 2
 
 [editor.cursor-shape]
 insert = "bar"
