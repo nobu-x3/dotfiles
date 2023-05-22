@@ -5,7 +5,7 @@ line-number = "absolute"
 mouse = false
 cursorline = true
 bufferline = "always"
-completion-replace = true
+completion-replace = false
 completion-trigger-len = 2
 
 [editor.cursor-shape]
