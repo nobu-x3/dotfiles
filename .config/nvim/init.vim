@@ -11,6 +11,8 @@ set foldlevel=99
 set clipboard=unnamedplus
 set cursorline
 
+luafile ~/.config/nvim/plugins.lua
+
 :set number
 :augroup numbertoggle
 :  autocmd!
@@ -23,60 +25,6 @@ autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritePre * %s/\n\+\%$//e
 
 " muh plugins
-call plug#begin('~/.local/share/nvim/plugged')
-Plug 'vim-airline/vim-airline' " the statusbar
-Plug 'dracula/vim', { 'name': 'dracula' }
-Plug 'morhetz/gruvbox' " theme
-Plug 'tpope/vim-commentary'
-Plug 'voldikss/vim-floaterm'
-Plug 'Yggdroot/indentLine'
-Plug 'mhinz/vim-startify', {'branch': 'center'}
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'puremourning/vimspector'
-
-" Rust:
-Plug 'simrat39/rust-tools.nvim'
-Plug 'rust-lang/rust.vim'
-Plug 'rust-lang/rustfmt'
-Plug 'nvim-treesitter/nvim-treesitter'
-
-" Zig:
-Plug 'ziglang/zig.vim'
-Plug 'nvim-lua/completion-nvim'
-Plug 'NTBBloodbath/zig-tools.nvim'
-
-" nvim-cmp has a lot of dependencies
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-
-" plugins for snippets
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
-
-" telescope plugin and its dependencies
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim' " fuzzy finder
-
-" brackets
-Plug 'windwp/nvim-autopairs'
-
-" bufferline
-Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons)
-
-" session-manager
-Plug 'Shatur/neovim-session-manager'
-
-" Debugger
-Plug 'mfussenegger/nvim-dap'
-call plug#end()
 
 augroup qs_colors
     autocmd!
@@ -189,7 +137,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " external config files (in lua)
 luafile ~/.config/nvim/nvim-cmp.lua
 luafile ~/.config/nvim/lsp.lua
-luafile ~/.config/nvim/plugins.lua
 luafile ~/.config/nvim/treesitterconfig.lua
 luafile ~/.config/nvim/vimspector.lua
 
