@@ -26,6 +26,7 @@ autocmd BufWritePre * %s/\n\+\%$//e
 
 " muh plugins
 
+colorscheme tokyonight-night
 augroup qs_colors
     autocmd!
     autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
@@ -70,7 +71,6 @@ nmap <leader>bl :buffers<cr>:b<space>
 " autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR
 
 " Basic Settings
-colorscheme dracula
 set noshowmode
 set number relativenumber
 
@@ -130,7 +130,7 @@ let g:Hexokinase_optInPatterns = [
 " let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
 
 " vim airline
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'base16_dracula'
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
 

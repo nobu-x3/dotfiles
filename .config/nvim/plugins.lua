@@ -1,7 +1,9 @@
-return require('packer').startup(function(use)
+vim.cmd [[packadd packer.nvim]]
+require('packer').startup(function(use)
   -- Packer can manage itself
 use 'wbthomason/packer.nvim'
-use 'vim-airline/vim-airline' -- the statusbar
+use 'vim-airline/vim-airline-themes' -- the statusbar
+use 'folke/tokyonight.nvim'
 use 'tpope/vim-commentary'
 use 'voldikss/vim-floaterm'
 use 'Yggdroot/indentLine'
@@ -50,12 +52,6 @@ end)
 -- for autopairs
 require('nvim-autopairs').setup{}
 
--- for bufferline
-require("bufferline").setup{
-    options = {
-        show_buffer_close_icons = false,
-    }
-}
 
 -- neovim tree
 require'nvim-tree'.setup {
