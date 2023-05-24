@@ -25,7 +25,7 @@ require('nvim-treesitter.configs').setup({
     --},
     {
 
-        ensure_installed = {"rust", "toml", "zig"},
+        ensure_installed = {"rust", "toml", "zig", "c"},
         auto_install = true,
         highlight = {enable = true, additional_vim_regex_highlighting = true},
         ident = {enable = true},

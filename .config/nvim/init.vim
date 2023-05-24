@@ -44,9 +44,6 @@ autocmd VimEnter * TSEnable highlight
 set rtp+=/bin/
 noremap <leader>fz :FZF<cr>
 
-" Replace all is aliased to S.
-nnoremap S :%s//gc<Left><Left>
-
 " Open corresponding .pdf/.html or preview
 map <leader>0 :!opout <c-r>%<CR>
 
@@ -176,11 +173,7 @@ autocmd FileType c,h,cpp,hpp nnoremap <buffer> <silent> gh :ClangdSwitchSourceHe
 nnoremap <C-n> :NvimTreeToggle<CR> " change this
 " nnoremap <leader>n :NvimTreeFindFile<CR> # to specific to have a keybinding for now
 
-function! Formatonsave()
-  let l:formatdiff = 1
-  pyf /usr/share/clang/clang-format.py
-endfunction
-autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+autocmd BufWritePre * FormatWrite
 let g:rustfmt_autosave = 1
 syntax on
 " indentLine char
