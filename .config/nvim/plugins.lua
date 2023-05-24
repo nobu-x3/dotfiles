@@ -1,4 +1,3 @@
-vim.cmd [[packadd packer.nvim]]
 require('packer').startup(function(use)
   -- Packer can manage itself
 use 'wbthomason/packer.nvim'
@@ -11,6 +10,8 @@ use 'williamboman/mason.nvim'
 use 'williamboman/mason-lspconfig.nvim'
 use 'neovim/nvim-lspconfig'
 use 'kyazdani42/nvim-tree.lua'
+
+use 'ggandor/leap.nvim'
 
 -- Rust:
 use 'simrat39/rust-tools.nvim'
@@ -56,6 +57,8 @@ require('nvim-autopairs').setup{}
 -- neovim tree
 require'nvim-tree'.setup {
 }
+
+require('leap').add_default_mappings()
 
 -- session manager
 require('session_manager').setup({
