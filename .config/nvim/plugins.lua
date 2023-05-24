@@ -1,14 +1,17 @@
-return require('packer').startup(function(use)
+require('packer').startup(function(use)
   -- Packer can manage itself
 use 'wbthomason/packer.nvim'
-use 'vim-airline/vim-airline' -- the statusbar
+use 'vim-airline/vim-airline-themes'
 use 'tpope/vim-commentary'
 use 'voldikss/vim-floaterm'
+use 'folke/tokyonight.nvim'
 use 'Yggdroot/indentLine'
 use 'williamboman/mason.nvim'
 use 'williamboman/mason-lspconfig.nvim'
 use 'neovim/nvim-lspconfig'
 use 'kyazdani42/nvim-tree.lua'
+
+use 'ggandor/leap.nvim'
 
 -- Rust:
 use 'simrat39/rust-tools.nvim'
@@ -47,19 +50,11 @@ use 'mfussenegger/nvim-dap'
 end)
 
 
--- for autopairs
-require('nvim-autopairs').setup{}
-
--- for bufferline
-require("bufferline").setup{
-    options = {
-        show_buffer_close_icons = false,
-    }
-}
-
 -- neovim tree
 require'nvim-tree'.setup {
 }
+
+require('leap').add_default_mappings()
 
 -- session manager
 require('session_manager').setup({
