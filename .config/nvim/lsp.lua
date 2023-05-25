@@ -120,6 +120,3 @@ rt.setup(
 )
 
 rt.inlay_hints.enable()
-
-
-local zt = require('zig-tools').setup()

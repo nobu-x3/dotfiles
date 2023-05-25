@@ -11,7 +11,13 @@ set foldlevel=99
 set clipboard=unnamedplus
 set cursorline
 
-luafile ~/.config/nvim/plugins.lua
+if has('win32')
+    luafile ~\AppData\Local\nvim\plugins.lua
+endif
+
+if has('unix')
+    luafile ~/.config/nvim/plugins.lua
+endif
 
 :set number
 :augroup numbertoggle
@@ -26,6 +32,7 @@ autocmd BufWritePre * %s/\n\+\%$//e
 
 " muh plugins
 
+colorscheme tokyonight-night
 augroup qs_colors
     autocmd!
     autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
@@ -36,9 +43,6 @@ autocmd VimEnter * TSEnable highlight
 " fzf-vim
 set rtp+=/bin/
 noremap <leader>fz :FZF<cr>
-
-" Replace all is aliased to S.
-nnoremap S :%s//gc<Left><Left>
 
 " Open corresponding .pdf/.html or preview
 map <leader>0 :!opout <c-r>%<CR>
@@ -70,7 +74,6 @@ nmap <leader>bl :buffers<cr>:b<space>
 " autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR
 
 " Basic Settings
-colorscheme dracula
 set noshowmode
 set number relativenumber
 
@@ -130,16 +133,24 @@ let g:Hexokinase_optInPatterns = [
 " let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
 
 " vim airline
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'base16_dracula'
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " external config files (in lua)
-luafile ~/.config/nvim/nvim-cmp.lua
-luafile ~/.config/nvim/lsp.lua
-luafile ~/.config/nvim/treesitterconfig.lua
-luafile ~/.config/nvim/vimspector.lua
+if has('win32')
+    luafile ~\AppData\Local\nvim\nvim-cmp.lua
+    luafile ~\AppData\Local\nvim\lsp.lua
+    luafile ~\AppData\Local\nvim\treesitterconfig.lua
+    luafile ~\AppData\Local\nvim\vimspector.lua
+endif
 
+if has('unix')
+    luafile ~/.config/nvim/nvim-cmp.lua
+    luafile ~/.config/nvim/lsp.lua
+    luafile ~/.config/nvim/treesitterconfig.lua
+    luafile ~/.config/nvim/vimspector.lua
+endif
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
@@ -162,11 +173,7 @@ autocmd FileType c,h,cpp,hpp nnoremap <buffer> <silent> gh :ClangdSwitchSourceHe
 nnoremap <C-n> :NvimTreeToggle<CR> " change this
 " nnoremap <leader>n :NvimTreeFindFile<CR> # to specific to have a keybinding for now
 
-function! Formatonsave()
-  let l:formatdiff = 1
-  pyf /usr/share/clang/clang-format.py
-endfunction
-autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+autocmd BufWritePre * FormatWrite
 let g:rustfmt_autosave = 1
 syntax on
 " indentLine char

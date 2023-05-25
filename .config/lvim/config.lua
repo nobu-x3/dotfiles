@@ -30,7 +30,6 @@ lvim.lsp.buffer_mappings.normal_mode["[d"] = lvim.lsp.buffer_mappings.normal_mod
 -- some settings can only passed as commandline flags, see `clangd --help`
 local clangd_flags = {
   "--background-index",
-  "--fallback-style=Google",
   "--all-scopes-completion",
   "--clang-tidy",
   "--log=error",
@@ -56,7 +55,7 @@ local custom_on_attach = function(client, bufnr)
 
   local opts = { noremap = true, silent = true, buffer = bufnr }
   lvim.keys.normal_mode["gh"] = nil
-  vim.keymap.set("n", "gh", "<cmd>ClangdSwitchSourceHeader<cr>", opts)
+  lvim.keymap.normal_mode["gh"] = "<cmd>ClangdSwitchSourceHeader<cr>"
   vim.keymap.set("x", "<leader>lA", "<cmd>ClangdAST<cr>", opts)
   vim.keymap.set("n", "<leader>lH", "<cmd>ClangdTypeHierarchy<cr>", opts)
   vim.keymap.set("n", "<leader>lt", "<cmd>ClangdSymbolInfo<cr>", opts)
