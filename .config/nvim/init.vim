@@ -10,6 +10,7 @@ set foldmethod=syntax
 set foldlevel=99
 set clipboard=unnamedplus
 set cursorline
+let mapleader = " "
 
 if has('win32')
     luafile ~\AppData\Local\nvim\plugins.lua
@@ -190,3 +191,12 @@ if exists("g:neovide")
     let g:neovide_cursor_animation_length = 0.04
     let g:neovide_cursor_trail_size = 0.2
 endif
+nnoremap h h
+nnoremap t j
+nnoremap n k
+nnoremap s l
+nnoremap l n
+nnoremap L N
+" easy access to beginning and end of line
+nnoremap - $
+nnoremap _ ^

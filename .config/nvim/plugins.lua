@@ -12,7 +12,7 @@ use 'neovim/nvim-lspconfig'
 use 'kyazdani42/nvim-tree.lua'
 use 'mhartington/formatter.nvim'
 use 'ggandor/leap.nvim'
-
+use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 -- Rust:
 use 'simrat39/rust-tools.nvim'
 use 'rust-lang/rust.vim'
@@ -127,3 +127,5 @@ require("formatter").setup {
     }
   }
 }
+vim.opt.termguicolors = true
+require("bufferline").setup{}
