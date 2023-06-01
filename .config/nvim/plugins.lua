@@ -5,6 +5,7 @@ use 'vim-airline/vim-airline-themes' -- the statusbar
 use 'folke/tokyonight.nvim'
 use 'tpope/vim-commentary'
 use 'voldikss/vim-floaterm'
+use 'folke/tokyonight.nvim'
 use 'Yggdroot/indentLine'
 use 'williamboman/mason.nvim'
 use 'williamboman/mason-lspconfig.nvim'
