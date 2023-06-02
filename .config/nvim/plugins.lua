@@ -111,8 +111,8 @@ require("formatter").setup {
             return {
                 exe = "clang-format",
                 args = {
-                    "--style=file:.clang_format",
-                    util.get_current_buffer_file_path()
+                        "--style=file:.clang_format",
+                        util.escape_path(util.get_current_buffer_file_name()),
                 },
                 stdin = true
             }

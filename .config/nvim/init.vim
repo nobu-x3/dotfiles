@@ -30,6 +30,7 @@ endif
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
 autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritePre * %s/\n\+\%$//e
+autocmd BufWritePre * FormatWrite
 
 " muh plugins
 
@@ -174,7 +175,6 @@ autocmd FileType c,h,cpp,hpp nnoremap <buffer> <silent> gh :ClangdSwitchSourceHe
 nnoremap <C-n> :NvimTreeToggle<CR> " change this
 " nnoremap <leader>n :NvimTreeFindFile<CR> # to specific to have a keybinding for now
 
-autocmd BufWritePre * FormatWrite
 let g:rustfmt_autosave = 1
 syntax on
 " indentLine char
@@ -191,12 +191,4 @@ if exists("g:neovide")
     let g:neovide_cursor_animation_length = 0.04
     let g:neovide_cursor_trail_size = 0.2
 endif
-nnoremap h h
-nnoremap t j
-nnoremap n k
-nnoremap s l
-nnoremap l n
-nnoremap L N
-" easy access to beginning and end of line
-nnoremap - $
-nnoremap _ ^
+nnoremap <silent> <leader>f :FormatWrite<CR>
