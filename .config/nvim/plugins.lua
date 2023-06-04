@@ -5,13 +5,11 @@ use 'vim-airline/vim-airline-themes' -- the statusbar
 use 'folke/tokyonight.nvim'
 use 'tpope/vim-commentary'
 use 'voldikss/vim-floaterm'
-use 'folke/tokyonight.nvim'
 use 'Yggdroot/indentLine'
 use 'williamboman/mason.nvim'
 use 'williamboman/mason-lspconfig.nvim'
 use 'neovim/nvim-lspconfig'
 use 'kyazdani42/nvim-tree.lua'
-use 'mhartington/formatter.nvim'
 use 'ggandor/leap.nvim'
 use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 -- Rust:
@@ -67,66 +65,5 @@ require('session_manager').setup({
     autosave_last_session = false,
 })
 
--- Utilities for creating configurations
-local util = require "formatter.util"
-
--- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
-require("formatter").setup {
-  -- Enable or disable logging
-  logging = false,
-  -- All formatter configurations are opt-in
-  filetype = {
-    -- Formatter configurations for filetype "lua" go here
-    -- and will be executed in order
-    lua = {
-      -- "formatter.filetypes.lua" defines default configurations for the
-      -- "lua" filetype
-      require("formatter.filetypes.lua").stylua,
-
-      -- You can also define your own configuration
-      function()
-        -- Supports conditional formatting
-        if util.get_current_buffer_file_name() == "special.lua" then
-          return nil
-        end
-
-        -- Full specification of configurations is down below and in Vim help
-        -- files
-        return {
-          exe = "stylua",
-          args = {
-            "--search-parent-directories",
-            "--stdin-filepath",
-            util.escape_path(util.get_current_buffer_file_path()),
-            "--",
-            "-",
-          },
-          stdin = true,
-        }
-      end
-    },
-
-    c = {
-        function()
-            return {
-                exe = "clang-format",
-                args = {
-                        "--style=file:.clang_format",
-                        util.escape_path(util.get_current_buffer_file_name()),
-                },
-                stdin = true
-            }
-        end
-    },
-
-    -- Use the special "*" filetype for defining formatter configurations on
-    -- any filetype
-    ["*"] = {
-      -- "formatter.filetypes.any" defines default configurations for any
-      -- filetype
-      require("formatter.filetypes.any").remove_trailing_whitespace
-    }
-  }
-}
 vim.opt.termguicolors = true
 require("bufferline").setup{}
