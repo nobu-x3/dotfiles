@@ -45,6 +45,7 @@ use 'kyazdani42/nvim-web-devicons' -- Recommended (for coloured icons)
 use 'Shatur/neovim-session-manager'
 
 -- Debugger
+use 'puremourning/vimspector'
 use 'mfussenegger/nvim-dap'
 end)
 
