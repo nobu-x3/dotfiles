@@ -186,7 +186,6 @@ let g:rustfmt_autosave = 1
 syntax on
 " indentLine char
 let g:indentLine_char = '│'
-let g:zig_fmt_autosave = 0
 
 " limit at 80 char
 set colorcolumn=81

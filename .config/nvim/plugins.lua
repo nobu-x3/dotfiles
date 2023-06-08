@@ -18,6 +18,10 @@ use 'rust-lang/rust.vim'
 use 'rust-lang/rustfmt'
 use 'nvim-treesitter/nvim-treesitter'
 
+use 'akinsho/toggleterm.nvim'
+use 'ziglang/zig.vim'
+use 'NTBBloodbath/zig-tools.nvim'
+
 -- nvim-cmp has a lot of dependencies
 use 'hrsh7th/cmp-nvim-lsp'
 use 'hrsh7th/cmp-buffer'
@@ -68,3 +72,10 @@ require('session_manager').setup({
 
 vim.opt.termguicolors = true
 require("bufferline").setup{}
+vim.cmd([[
+let g:zig_fmt_autosave = 1
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+" Enable completions as you type
+let g:completion_enable_auto_popup = 1
+]])

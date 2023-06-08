@@ -97,7 +97,8 @@ PS1='[\u@\h \W]\$ '
 
 export VISUAL="helix"
 
-export PATH="$HOME/zig-bootstrap/out/zig-x86_64-linux-gnu-native/bin:$PATH"
+# export PATH="$HOME/zig-bootstrap/out/zig-x86_64-linux-gnu-native/bin:$PATH"
+export PATH="$HOME/zig:$PATH"
 export PATH="$HOME/zls/zig-out/bin:$PATH"
 export PATH=$PATH:/home/nobu/.spicetify
 export PATH="$HOME/.local/bin:$PATH"
