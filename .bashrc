@@ -93,6 +93,7 @@ eval $(keychain --eval --quiet github)
 
 alias ls='ls --color=auto'
 alias hx='helix'
+alias nvim='neovide'
 PS1='[\u@\h \W]\$ '
 
 export VISUAL="helix"
