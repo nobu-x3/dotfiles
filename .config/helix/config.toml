@@ -25,6 +25,9 @@ left = ["mode", "file-name", "file-modification-indicator"]
 center = ["version-control"]
 right = ["diagnostics", "workspace-diagnostics", "position"]
 
+[editor.soft-wrap]
+enable = true
+
 [keys.normal]
 C-n = ":n" # open new scrath buffer
 C-a = "code_action" # shows code actions
