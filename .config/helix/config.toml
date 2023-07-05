@@ -32,3 +32,5 @@ enable = true
 C-n = ":n" # open new scrath buffer
 C-a = "code_action" # shows code actions
 C-q = ":bc" # close current buffer
+"minus" = "goto_line_start"
+_ = "goto_line_end"
