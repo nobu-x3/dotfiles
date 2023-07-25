@@ -51,6 +51,11 @@ use 'Shatur/neovim-session-manager'
 -- Debugger
 use 'puremourning/vimspector'
 use 'mfussenegger/nvim-dap'
+
+-- helix mapping
+use {
+  '00sapo/visual.nvim',
+}
 end)
 
 
