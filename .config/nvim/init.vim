@@ -28,17 +28,17 @@ endif
 :augroup END
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
-autocmd BufWritePre * %s/\s\+$//e
-autocmd BufWritePre * %s/\n\+\%$//e
-function FormatBuffer()
-if &modified && !empty(findfile('.clang_format', expand('%:p:h') . ';'))
-let cursor_pos = getpos('.')
-:%!clang-format --style=file:.clang_format
-call setpos('.', cursor_pos)
-endif
-endfunction
+" autocmd BufWritePre * %s/\s\+$//e
+" autocmd BufWritePre * %s/\n\+\%$//e
+" function FormatBuffer()
+" if &modified && !empty(findfile('.clang_format', expand('%:p:h') . ';'))
+" let cursor_pos = getpos('.')
+" :%!clang-format --style=file:.clang_format
+" call setpos('.', cursor_pos)
+" endif
+" endfunction
 
-autocmd BufWritePre *.h,*.hpp,*.c,*.cpp,*.vert,*.frag :call FormatBuffer()
+" autocmd BufWritePre *.h,*.hpp,*.c,*.cpp,*.vert,*.frag :call FormatBuffer()
 " muh plugins
 
 colorscheme tokyonight-night
