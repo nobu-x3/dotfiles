@@ -89,7 +89,7 @@ export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-eval $(keychain --eval --quiet github)
+eval $(keychain --eval --quiet id_rsa)
 
 alias ls='ls --color=auto'
 alias hx='helix'
