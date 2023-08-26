@@ -103,4 +103,8 @@ export PATH="$HOME/zig:$PATH"
 export PATH="$HOME/zls/zig-out/bin:$PATH"
 export PATH=$PATH:/home/nobu/.spicetify
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/Odin:$PATH"
+export PATH="$HOME/ols:$PATH"
+export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
+export ODIN_ROOT="$HOME/Odin"
 source ~/vulkanSDK/setup-env.sh

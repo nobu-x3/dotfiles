@@ -1,0 +1,154 @@
+19:21:39.883: Using EGL/X11
+19:21:39.883: CPU Name: AMD Ryzen 9 5950X 16-Core Processor
+19:21:39.883: CPU Speed: 3589.851MHz
+19:21:39.884: Physical Cores: 16, Logical Cores: 32
+19:21:39.884: Physical Memory: 31996MB Total, 29970MB Free
+19:21:39.884: Kernel Version: Linux 6.4.10-arch1-1
+19:21:39.884: Distribution: "EndeavourOS" Unknown
+19:21:39.884: Desktop Environment: i3 (i3)
+19:21:39.884: Session Type: x11
+19:21:39.884: Window System: X11.0, Vendor: The X.Org Foundation, Version: 1.21.1
+19:21:39.886: Qt Version: 6.5.2 (runtime), 6.5.2 (compiled)
+19:21:39.886: Portable mode: false
+19:21:40.029: OBS 29.1.0-550-gecf914dd6-modified (linux)
+19:21:40.029: ---------------------------------
+19:21:40.029: ---------------------------------
+19:21:40.029: audio settings reset:
+19:21:40.029: 	samples per sec: 48000
+19:21:40.029: 	speakers:        2
+19:21:40.029: 	max buffering:   960 milliseconds
+19:21:40.029: 	buffering type:  dynamically increasing
+19:21:40.032: ---------------------------------
+19:21:40.032: Initializing OpenGL...
+19:21:40.071: Loading up OpenGL on adapter AMD AMD Radeon RX 6900 XT (navi21, LLVM 15.0.7, DRM 3.52, 6.4.10-arch1-1)
+19:21:40.071: OpenGL loaded successfully, version 4.6 (Core Profile) Mesa 23.1.5, shading language 4.60
+19:21:40.094: ---------------------------------
+19:21:40.094: video settings reset:
+19:21:40.094: 	base resolution:   2560x1440
+19:21:40.094: 	output resolution: 1920x1080
+19:21:40.094: 	downscale filter:  Bicubic
+19:21:40.094: 	fps:               60/1
+19:21:40.094: 	format:            NV12
+19:21:40.094: 	YUV mode:          Rec. 709/Partial
+19:21:40.094: NV12 texture support not available
+19:21:40.094: P010 texture support not available
+19:21:40.097: Audio monitoring device:
+19:21:40.097: 	name: Default
+19:21:40.097: 	id: default
+19:21:40.097: ---------------------------------
+19:21:40.116: No AJA devices found, skipping loading AJA UI plugin
+19:21:40.116: Failed to initialize module 'aja-output-ui.so'
+19:21:40.134: No AJA devices found, skipping loading AJA plugin
+19:21:40.134: Failed to initialize module 'aja.so'
+19:21:40.142: Failed to load 'en-US' text for module: 'decklink-captions.so'
+19:21:40.151: Failed to load 'en-US' text for module: 'decklink-output-ui.so'
+19:21:40.160: A DeckLink iterator could not be created.  The DeckLink drivers may not be installed
+19:21:40.160: Failed to initialize module 'decklink.so'
+19:21:42.114: [pipewire] No captures available
+19:21:42.137: v4l2loopback not installed, virtual camera disabled
+19:21:42.150: [obs-browser]: Version 2.22.0
+19:21:42.151: [obs-browser]: CEF Version 103.0.5060.134 (runtime), 103.0.0-5060-shared-textures_143.2591+g4204d54+chromium-103.0.5060.134 (compiled)
+19:21:42.178: VAAPI: Failed to initialize display in vaapi_device_h264_supported
+19:21:42.178: FFmpeg VAAPI H264 encoding not supported
+19:21:42.178: VAAPI: Failed to initialize display in vaapi_device_hevc_supported
+19:21:42.179: FFmpeg VAAPI HEVC encoding not supported
+19:21:42.260: [obs-websocket] [obs_module_load] you can haz websockets (Version: 5.2.3 | RPC Version: 1)
+19:21:42.260: [obs-websocket] [obs_module_load] Qt version (compile-time): 6.5.2 | Qt version (run-time): 6.5.2
+19:21:42.260: [obs-websocket] [obs_module_load] Linked ASIO Version: 102800
+19:21:42.270: [obs-websocket] [obs_module_load] Module loaded.
+19:21:42.313: [vlc-video]: VLC 3.0.18 Vetinari found, VLC video source enabled
+19:21:42.313: ---------------------------------
+19:21:42.313:   Loaded Modules:
+19:21:42.313:     vlc-video.so
+19:21:42.313:     text-freetype2.so
+19:21:42.313:     rtmp-services.so
+19:21:42.313:     obs-x264.so
+19:21:42.313:     obs-websocket.so
+19:21:42.313:     obs-webrtc.so
+19:21:42.313:     obs-vst.so
+19:21:42.313:     obs-transitions.so
+19:21:42.313:     obs-qsv11.so
+19:21:42.313:     obs-outputs.so
+19:21:42.313:     obs-filters.so
+19:21:42.313:     obs-ffmpeg.so
+19:21:42.313:     obs-browser.so
+19:21:42.313:     linux-v4l2.so
+19:21:42.313:     linux-pulseaudio.so
+19:21:42.313:     linux-pipewire.so
+19:21:42.313:     linux-capture.so
+19:21:42.313:     linux-alsa.so
+19:21:42.313:     image-source.so
+19:21:42.313:     frontend-tools.so
+19:21:42.313:     decklink-output-ui.so
+19:21:42.313:     decklink-captions.so
+19:21:42.313: ---------------------------------
+19:21:42.314: ==== Startup complete ===============================================
+19:21:42.352: All scene data cleared
+19:21:42.352: ------------------------------------------------
+19:21:42.382: pulse-input: Server name: 'PulseAudio (on PipeWire 0.3.77) 15.0.0'
+19:21:42.382: pulse-input: Audio format: s32le, 48000 Hz, 2 channels
+19:21:42.382: pulse-input: Started recording from 'alsa_output.usb-Focusrite_Scarlett_Solo_USB_Y7TTHZG9401608-00.analog-stereo.monitor' (default)
+19:21:42.382: [Loaded global audio device]: 'Desktop Audio'
+19:21:42.382: pulse-input: Server name: 'PulseAudio (on PipeWire 0.3.77) 15.0.0'
+19:21:42.383: pulse-input: Audio format: s32le, 48000 Hz, 2 channels
+19:21:42.383: pulse-input: Started recording from 'alsa_input.usb-Focusrite_Scarlett_Solo_USB_Y7TTHZG9401608-00.analog-stereo' (default)
+19:21:42.383: [Loaded global audio device]: 'Mic/Aux'
+19:21:42.383:     - filter: 'Noise Gate' (noise_gate_filter)
+19:21:42.383:     - filter: 'Compressor' (compressor_filter)
+19:21:42.383:     - filter: 'Limiter' (limiter_filter)
+19:21:42.383:     - filter: '3-Band Equalizer' (basic_eq_filter)
+19:21:42.383: xshm-input: Geometry 2560x1440 @ 0,0
+19:21:42.385: v4l2-input: Start capture from /dev/video0
+19:21:42.386: v4l2-input: Input: 0
+19:21:42.393: v4l2-input: Resolution: 1920x1080
+19:21:42.393: v4l2-input: Pixelformat: MJPG
+19:21:42.393: v4l2-input: Linesize: 0 Bytes
+19:21:42.393: v4l2-input: Framerate: 30.00 fps
+19:21:42.399: v4l2-input: /dev/video0: select timeout set to 166666 (5x frame periods)
+19:21:42.413: pulse-am: Server name: 'PulseAudio (on PipeWire 0.3.77) 15.0.0'
+19:21:42.413: pulse-am: Audio format: s32le, 48000 Hz, 2 channels
+19:21:42.413: pulse-am: Started Monitoring in 'alsa_output.usb-Focusrite_Scarlett_Solo_USB_Y7TTHZG9401608-00.analog-stereo'
+19:21:42.414: Switched to scene 'Scene'
+19:21:42.415: ------------------------------------------------
+19:21:42.415: Loaded scenes:
+19:21:42.415: - scene 'Scene':
+19:21:42.415:     - source: 'Screen Capture (XSHM)' (xshm_input)
+19:21:42.415:     - source: 'Video Capture Device (V4L2)' (v4l2_input)
+19:21:42.415:         - filter: 'Color Correction' (color_filter_v2)
+19:21:42.415:         - filter: 'Crop/Pad' (crop_filter)
+19:21:42.415:         - filter: 'Apply LUT' (clut_filter)
+19:21:42.415:     - source: 'Chat' (browser_source)
+19:21:42.415:     - source: 'Alerts' (browser_source)
+19:21:42.415:         - monitoring: monitor and output
+19:21:42.415: ------------------------------------------------
+19:21:42.658: v4l2-input: /dev/video0: select timed out
+19:21:42.658: v4l2-input: /dev/video0: failed to log status
+19:21:42.992: adding 42 milliseconds of audio buffering, total audio buffering is now 42 milliseconds (source: Desktop Audio)
+19:21:42.992: 
+19:22:09.773: ---------------------------------
+19:22:09.773: [x264 encoder: 'simple_video_stream'] preset: veryfast
+19:22:09.777: [x264 encoder: 'simple_video_stream'] settings:
+19:22:09.777: 	rate_control: CBR
+19:22:09.777: 	bitrate:      6000
+19:22:09.777: 	buffer size:  6000
+19:22:09.777: 	crf:          23
+19:22:09.777: 	fps_num:      60
+19:22:09.777: 	fps_den:      1
+19:22:09.777: 	width:        1920
+19:22:09.777: 	height:       1080
+19:22:09.777: 	keyint:       120
+19:22:09.777: 
+19:22:09.777: [x264 encoder: 'simple_video_stream'] custom settings: 
+19:22:09.777: 	scenecut = 0
+19:22:09.800: ---------------------------------
+19:22:09.800: [FFmpeg aac encoder: 'simple_aac'] bitrate: 160, channels: 2, channel_layout: stereo
+19:22:09.800: 
+19:22:09.802: [rtmp stream: 'simple_stream'] Connecting to RTMP URL rtmp://waw02.contribute.live-video.net/app...
+19:22:11.073: [rtmp stream: 'simple_stream'] Connection to rtmp://waw02.contribute.live-video.net/app (52.223.199.212) successful
+19:22:11.075: ==== Streaming Start ===============================================
+20:17:58.241: [rtmp stream: 'simple_stream'] User stopped the stream
+20:17:58.242: Output 'simple_stream': stopping
+20:17:58.242: Output 'simple_stream': Total frames output: 200780
+20:17:58.242: Output 'simple_stream': Total drawn frames: 200905 (200906 attempted)
+20:17:58.242: Output 'simple_stream': Number of lagged frames due to rendering lag/stalls: 1 (0.0%)
+20:17:58.243: ==== Streaming Stop ================================================
