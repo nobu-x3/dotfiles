@@ -105,16 +105,18 @@ map <leader>I :setlocal noautoindent<CR>
 
 """ For Plugins
 
-" floaterm configs
-let g:floaterm_winblend = 8
+" " floaterm configs
+" let g:floaterm_winblend = 8
 
-nnoremap   <silent>   <F1>   :FloatermNew<CR>
-tnoremap   <silent>   <F1>   <C-\><C-n>:FloatermNew<CR>
-nnoremap   <silent>   <F2>   :FloatermNext<CR>
-tnoremap   <silent>   <F2>  <C-\><C-n>:FloatermNext<CR>
-nnoremap   <silent>   ,t   :FloatermToggle<CR>
-tnoremap   <silent>   <Esc><Esc>   <C-\><C-n>:FloatermToggle<CR>
-tnoremap   <silent>   <F3>   <C-\><C-n>:FloatermKill<CR>
+nnoremap   <silent>   <F2>   :ToggleTerm<CR>
+tnoremap   <silent>   <F2>   <C-\><C-n>:ToggleTerm<CR>
+" nnoremap   <silent>   <F2>   :FloatermNew<CR>
+" tnoremap   <silent>   <F2>   <C-\><C-n>:FloatermNew<CR>
+" nnoremap   <silent>   <F3>   :FloatermNext<CR>
+" tnoremap   <silent>   <F3>  <C-\><C-n>:FloatermNext<CR>
+" nnoremap   <silent>   ,t   :FloatermToggle<CR>
+" tnoremap   <silent>   <Esc><Esc>   <C-\><C-n>:FloatermToggle<CR>
+" tnoremap   <silent>   <F4>   <C-\><C-n>:FloatermKill<CR>
 
 nnoremap <silent><F9> :lua require('dap').toggle_breakpoint()<cr>
 nnoremap <silent><F5> :lua require('dap').continue()<cr>
@@ -151,6 +153,7 @@ packadd! vimspector
 if has('win32')
     luafile ~\AppData\Local\nvim\nvim-cmp.lua
     luafile ~\AppData\Local\nvim\lsp.lua
+    luafile ~\AppData\Local\nvim\ui.lua
     luafile ~\AppData\Local\nvim\treesitterconfig.lua
     luafile ~\AppData\Local\nvim\vimspector.lua
 endif
@@ -158,6 +161,7 @@ endif
 if has('unix')
     luafile ~/.config/nvim/nvim-cmp.lua
     luafile ~/.config/nvim/lsp.lua
+    luafile ~/.config/nvim/ui.lua
     luafile ~/.config/nvim/treesitterconfig.lua
     luafile ~/.config/nvim/vimspector.lua
 endif

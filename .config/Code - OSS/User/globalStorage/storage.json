@@ -1,0 +1,22 @@
+{
+    "userDataProfilesMigration": true,
+    "profileAssociations": {
+        "workspaces": {
+            "file:///home/nobu/.ssh": "__default__profile__"
+        },
+        "emptyWindows": {
+            "1693319707757": "__default__profile__"
+        }
+    },
+    "profileAssociationsMigration": true,
+    "telemetry.machineId": "3645fc9d4614433f97d7a12dc2b67a1ece92c5254051c477f71c199b937ae2a4",
+    "backupWorkspaces": {
+        "workspaces": [],
+        "folders": [],
+        "emptyWindows": [
+            {
+                "backupFolder": "1693319707757"
+            }
+        ]
+    }
+}

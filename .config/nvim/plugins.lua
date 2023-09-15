@@ -4,7 +4,6 @@ use 'wbthomason/packer.nvim'
 use 'vim-airline/vim-airline-themes' -- the statusbar
 use 'folke/tokyonight.nvim'
 use 'tpope/vim-commentary'
-use 'voldikss/vim-floaterm'
 use 'Yggdroot/indentLine'
 use 'williamboman/mason.nvim'
 use 'williamboman/mason-lspconfig.nvim'
@@ -18,7 +17,9 @@ use 'rust-lang/rust.vim'
 use 'rust-lang/rustfmt'
 use 'nvim-treesitter/nvim-treesitter'
 
-use 'akinsho/toggleterm.nvim'
+use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+  require("toggleterm").setup()
+end}
 use 'ziglang/zig.vim'
 use 'NTBBloodbath/zig-tools.nvim'
 
@@ -52,6 +53,9 @@ use 'Shatur/neovim-session-manager'
 -- Debugger
 use 'puremourning/vimspector'
 use 'mfussenegger/nvim-dap'
+use 'MunifTanjim/nui.nvim'
+use 'rcarriga/nvim-notify'
+use 'folke/noice.nvim'
 end)
 
 

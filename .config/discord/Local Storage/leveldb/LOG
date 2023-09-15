@@ -1,0 +1,6 @@
+2023/09/15-18:42:28.100 1029 Reusing MANIFEST /home/nobu/.config/discord/Local Storage/leveldb/MANIFEST-000001
+2023/09/15-18:42:28.101 1029 Recovering log #6
+2023/09/15-18:42:28.103 1029 Reusing old log /home/nobu/.config/discord/Local Storage/leveldb/000006.log 
+2023/09/15-18:44:30.817 1029 Level-0 table #10: started
+2023/09/15-18:44:30.833 1029 Level-0 table #10: 1914881 bytes OK
+2023/09/15-18:44:30.836 1029 Delete type=0 #6
