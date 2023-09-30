@@ -17,6 +17,9 @@ use 'rust-lang/rust.vim'
 use 'rust-lang/rustfmt'
 use 'nvim-treesitter/nvim-treesitter'
 
+-- Jai:
+use 'rluba/jai.vim'
+
 use {"akinsho/toggleterm.nvim", tag = '*', config = function()
   require("toggleterm").setup()
 end}
@@ -55,7 +58,6 @@ use 'puremourning/vimspector'
 use 'mfussenegger/nvim-dap'
 use 'MunifTanjim/nui.nvim'
 use 'rcarriga/nvim-notify'
-use 'folke/noice.nvim'
 end)
 
 

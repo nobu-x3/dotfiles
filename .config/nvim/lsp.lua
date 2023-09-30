@@ -10,6 +10,7 @@ local sign = function(opts)
     })
 end
 
+
 sign({ name = 'DiagnosticSignError', text = '' })
 sign({ name = 'DiagnosticSignWarn', text = '' })
 sign({ name = 'DiagnosticSignHint', text = '' })
@@ -70,7 +71,7 @@ end
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-local servers = { 'zls', "pylsp", "clangd",  "omnisharp_mono", "ols" }
+local servers = { 'zls', "pylsp", "clangd", "omnisharp_mono", "ols", "lua_ls" }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
         on_attach = on_attach,
@@ -124,3 +125,45 @@ rt.setup(
 
 rt.inlay_hints.enable()
 local zt = require('zig-tools').setup()
+-- local setup_jails = function()
+--     vim.lsp.start({
+--         cmd = { 'jails -jai_path ~/jai' },
+--     })
+-- end
+-- local generalSettingsGroup = vim.api.nvim_create_augroup('General settings', { clear = true })
+-- vim.api.nvim_create_autocmd('FileType', {
+--     pattern = {'*.jai'},
+--     callback = setup_jails,
+--     group = generalSettingsGroup,
+-- })
+local configs = require 'lspconfig.configs'
+if not configs.jails then
+    configs.jails = {
+        default_config = {
+            cmd = { 'jails', ' -jai_path', '~/jai' },
+            filetypes = { 'jai' },
+            root_dir = function(fname)
+                return lsp_config.util.find_git_ancestor(fname)
+            end,
+            settings = {},
+        },
+    }
+end
+lsp_config.jails.setup({
+    on_attach = on_attach,
+    flags = {
+        -- This will be the default in neovim 0.7+
+        debounce_text_changes = 150,
+    },
+    capabilities = capabilities,
+})
+-- vim.tbl_deep_extend('keep', lsp_config, {
+--     jails = {
+--         cmd = { 'jails', ' -jai_path ~/jai' },
+--         filetypes = { 'jai' },
+--         root_dir = function(fname)
+--             return lsp_config.util.find_git_ancestor(fname)
+--         end,
+--         settings = {},
+--     }
+-- })

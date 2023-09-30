@@ -153,7 +153,7 @@ packadd! vimspector
 if has('win32')
     luafile ~\AppData\Local\nvim\nvim-cmp.lua
     luafile ~\AppData\Local\nvim\lsp.lua
-    luafile ~\AppData\Local\nvim\ui.lua
+    " luafile ~\AppData\Local\nvim\ui.lua
     luafile ~\AppData\Local\nvim\treesitterconfig.lua
     luafile ~\AppData\Local\nvim\vimspector.lua
 endif
@@ -161,7 +161,7 @@ endif
 if has('unix')
     luafile ~/.config/nvim/nvim-cmp.lua
     luafile ~/.config/nvim/lsp.lua
-    luafile ~/.config/nvim/ui.lua
+    " luafile ~/.config/nvim/ui.lua
     luafile ~/.config/nvim/treesitterconfig.lua
     luafile ~/.config/nvim/vimspector.lua
 endif
