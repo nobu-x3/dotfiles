@@ -40,3 +40,15 @@ require('nvim-treesitter.configs').setup({
 -- Treesitter folding
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.jai = {
+  install_info = {
+    url = "https://github.com/adragomir/tree-sitter-jai", -- local path or git repo
+    files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
+    -- optional entries:
+    branch = "master", -- default branch in case of git repo if different from master
+    generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+    requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+  },
+  filetype = "jai", -- if filetype does not match the parser name
+}
