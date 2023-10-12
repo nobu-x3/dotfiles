@@ -2,12 +2,18 @@
 "     nvim configs
 " ####################
 
+set nu
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
-set hidden
-set foldmethod=syntax
-set foldlevel=99
+set wrap!
+set smartindent
+set hlsearch!
+set incsearch
+set termguicolors
+set signcolumn
+set scrolloff=8
 set clipboard=unnamedplus
 set cursorline
 let mapleader = " "
@@ -41,7 +47,6 @@ endif
 " autocmd BufWritePre *.h,*.hpp,*.c,*.cpp,*.vert,*.frag :call FormatBuffer()
 " muh plugins
 
-colorscheme tokyonight-night
 augroup qs_colors
     autocmd!
     autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
@@ -124,7 +129,6 @@ nnoremap <silent><F10> :lua require('dap').step_over()<cr>
 nnoremap <silent><F11> :lua require('dap').step_into()<cr>
 nnoremap <silent><F6> :lua require('dap').repl.open()<cr>
 " hexokinase configs
-set termguicolors
 nnoremap <F12> :HexokinaseToggle<CR>
 
 let g:Hexokinase_highlighters = [ 'backgroundfull' ]
@@ -205,3 +209,4 @@ if exists("g:neovide")
 endif
 nnoremap - $
 nnoremap _ ^
+hi Pmenu guibg='black'

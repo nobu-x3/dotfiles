@@ -3,6 +3,13 @@ require('packer').startup(function(use)
 use 'wbthomason/packer.nvim'
 use 'vim-airline/vim-airline-themes' -- the statusbar
 use 'folke/tokyonight.nvim'
+use({
+	  'rose-pine/neovim',
+	  as = 'rose-pine',
+	  config = function()
+		  vim.cmd('colorscheme rose-pine')
+	  end
+  })
 use 'tpope/vim-commentary'
 use 'Yggdroot/indentLine'
 use 'williamboman/mason.nvim'
