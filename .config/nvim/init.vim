@@ -209,4 +209,5 @@ if exists("g:neovide")
 endif
 nnoremap - $
 nnoremap _ ^
+colorscheme moonfly
 hi Pmenu guibg='black'
