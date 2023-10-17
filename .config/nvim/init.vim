@@ -16,6 +16,8 @@ set signcolumn
 set scrolloff=8
 set clipboard=unnamedplus
 set cursorline
+set foldmethod=indent
+set foldlevelstart=99
 let mapleader = " "
 
 if has('win32')
@@ -34,17 +36,17 @@ endif
 :augroup END
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
-" autocmd BufWritePre * %s/\s\+$//e
-" autocmd BufWritePre * %s/\n\+\%$//e
-" function FormatBuffer()
-" if &modified && !empty(findfile('.clang_format', expand('%:p:h') . ';'))
-" let cursor_pos = getpos('.')
-" :%!clang-format --style=file:.clang_format
-" call setpos('.', cursor_pos)
-" endif
-" endfunction
+autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * %s/\n\+\%$//e
+function FormatBuffer()
+if &modified && !empty(findfile('.clang_format', expand('%:p:h') . ';'))
+let cursor_pos = getpos('.')
+:%!clang-format --style=file:.clang_format
+call setpos('.', cursor_pos)
+endif
+endfunction
 
-" autocmd BufWritePre *.h,*.hpp,*.c,*.cpp,*.vert,*.frag :call FormatBuffer()
+autocmd BufWritePre *.h,*.hpp,*.c,*.cpp,*.vert,*.frag :call FormatBuffer()
 " muh plugins
 
 augroup qs_colors
@@ -65,7 +67,7 @@ map <leader>0 :!opout <c-r>%<CR>
 map <leader>m :w! \| !compiler "<c-r>%"
 
 " disabling auto-comment by default
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 """ external copy-paste
 noremap <leader>p :-1r !xclip -o -sel clip<CR>
@@ -148,7 +150,7 @@ let g:Hexokinase_optInPatterns = [
 " let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
 
 " vim airline
-let g:airline_theme = 'base16_dracula'
+" let g:airline_theme = 'base16_dracula'
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
 
