@@ -43,7 +43,7 @@ wm-restack = i3
 
 # Top modules
 top-left = i3
-top-center = spotify mpd
+top-center = mpd
 top-right = keyboard backlight alsa battery network-short date
 
 # Bottom modules
@@ -103,4 +103,4 @@ network-click-left = i3-msg workspace 2
 # on different bars
 #
 # Default: false
-i3-pin-workspaces = false
+i3-pin-workspaces = true

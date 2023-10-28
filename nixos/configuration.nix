@@ -73,23 +73,31 @@
 
   # Enable sound with pipewire.
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  hardware.pulseaudio.enable = true;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+#  services.pipewire = {
+#    enable = true;
+#    alsa.enable = true;
+#    alsa.support32Bit = true;
+#    pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
-  };
+#  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "armcord-3.2.4"
+      "electron-24.8.6"
+    ];
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nobu = {
@@ -99,30 +107,66 @@
     packages = with pkgs; [
       firefox
       thunderbird
+      armcord
+      obs-studio
+      obsidian
+      slack
+      spotify
     ];
   };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git
+    jq
     wget
     neovim
+    vimPlugins.packer-nvim
     tmux
     ripgrep
     fd
     oh-my-zsh
     alacritty
+    xclip
+    polybar
+    i3
+    rofi
+    gtk3
+    dunst
+    feh
+    python311
+    feh
+    cmake
+    nerdfonts
+    llvmPackages_16.libllvm
+    llvmPackages_16.libcxx
+    llvmPackages_16.bintools
+    llvmPackages_16.libcxxClang
   ];
 
+programs.zsh = {
+  enable = true;
+  shellAliases = {
+    ll = "ls -l";
+    update = "sudo nixos-rebuild switch";
+  };
+  histSize = 10000;
+  histFile = "~/zsh/history";
+};
   programs.zsh.ohMyZsh = {
     enable = true;
     plugins = ["git" "history" "man" "tmux"];
     theme = "amuse";
+  };
+
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
   };
 
   hardware.opengl.extraPackages = [
@@ -130,6 +174,18 @@
     pkgs.amdvlk
   ];
   hardware.opengl.driSupport = true;
+
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    liberation_ttf
+    mplus-outline-fonts.githubRelease
+    dina-font
+    proggyfonts
+    font-awesome
+    (nerdfonts.override {fonts = ["FiraCode"];})
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
