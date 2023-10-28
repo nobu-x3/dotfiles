@@ -139,11 +139,20 @@
     python311
     feh
     cmake
-    nerdfonts
     llvmPackages_16.libllvm
     llvmPackages_16.libcxx
     llvmPackages_16.bintools
     llvmPackages_16.libcxxClang
+    nerdfonts
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts.githubRelease
+    dina-font
+    proggyfonts
   ];
 
 programs.zsh = {
@@ -184,7 +193,8 @@ programs.zsh = {
     dina-font
     proggyfonts
     font-awesome
-    (nerdfonts.override {fonts = ["FiraCode"];})
+    fira-code
+    fira-code-symbols
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
