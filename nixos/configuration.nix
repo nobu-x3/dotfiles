@@ -160,7 +160,6 @@
     fira-code-symbols
     source-code-pro
     font-awesome
-    tmux-sessionizer
   ];
 
   programs.zsh = {
@@ -199,10 +198,17 @@
       set-option -g default-shell /run/current-system/sw/bin/zsh
       set -ga terminal-overrides ",screen-256color*:Tc"
       set-option -g default-terminal "screen-256color"
-      set-window-eption -g mode-keys vi
-      bind -T copy-mode-vi v send-keys -X begin-selection
-      bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
-      # vim-like pane switching
+      set-window-option -g mode-keys vi
+      bind-key -T copy-mode-vi v send-keys -X begin-selection
+      bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+      unbind-key w
+      bind-key w split-window -h -c "#{pane_current_path}"
+      bind-key v split-window -c "#{pane_current_path}"
+      bind-key q kill-pane
+      bind -r k select-pane -U
+      bind -r j select-pane -D
+      bind -r h select-pane -L
+      bind -r l select-pane -R
     '';
   };
 

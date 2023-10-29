@@ -405,9 +405,13 @@ cursor:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /usr/bin/zsh
-#  args:
-#    - --login
+  program: /run/current-system/sw/bin/tmux
+  args:
+    - new-session
+    - -A
+    - -D
+    - -s
+    - main
 
 # Startup directory
 #
