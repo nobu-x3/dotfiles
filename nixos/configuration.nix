@@ -11,9 +11,17 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.loader = {
+    systemd-boot = {
+        enable = true;
+    };
+#    grub = {
+#        enable = true;
+#        useOSProber = true;
+#        devices = ["nodev"];
+#    };
+    efi.canTouchEfiVariables = true;
+  };
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -147,12 +155,10 @@
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    liberation_ttf
     fira-code
     fira-code-symbols
-    mplus-outline-fonts.githubRelease
-    dina-font
-    proggyfonts
+    source-code-pro
+    font-awesome
   ];
 
 programs.zsh = {
@@ -185,16 +191,14 @@ programs.zsh = {
   hardware.opengl.driSupport = true;
 
   fonts.fonts = with pkgs; [
+    nerdfonts
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    liberation_ttf
-    mplus-outline-fonts.githubRelease
-    dina-font
-    proggyfonts
-    font-awesome
     fira-code
     fira-code-symbols
+    source-code-pro
+    font-awesome
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
