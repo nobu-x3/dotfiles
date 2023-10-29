@@ -11,16 +11,14 @@
     ];
 
   # Bootloader.
-  boot.loader = {
-    systemd-boot = {
-        enable = true;
-    };
-#    grub = {
-#        enable = true;
-#        useOSProber = true;
-#        devices = ["nodev"];
-#    };
-    efi.canTouchEfiVariables = true;
+  boot = {
+      loader = {
+        systemd-boot = {
+            enable = true;
+        };
+        efi.canTouchEfiVariables = true;
+      };
+      initrd.kernelModules = ["amdgpu"];
   };
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -52,6 +50,7 @@
 
   services.xserver = {
     enable = true;
+    videoDrivers = ["amdgpu"];
     layout = "us";
     xkbVariant = "";
     displayManager.lightdm.enable = true;
@@ -121,6 +120,7 @@
       obsidian
       slack
       spotify
+      renderdoc
     ];
   };
 
@@ -128,6 +128,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    mesa
+    amdvlk
     gnumake
     gcc
     unzip
@@ -152,6 +154,7 @@
     feh
     python311
     feh
+    pkg-config
     cmake
     #llvmPackages_16.libllvm
     #llvmPackages_16.libcxx
@@ -171,6 +174,11 @@
     fira-code-symbols
     source-code-pro
     font-awesome
+    vulkan-tools
+    vulkan-loader
+    vulkan-headers
+    vulkan-validation-layers
+    vulkan-extension-layer
   ];
 
   programs.zsh = {
