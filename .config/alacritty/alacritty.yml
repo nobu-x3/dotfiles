@@ -405,7 +405,7 @@ cursor:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /run/current-system/sw/bin/tmux
+  program: /bin/tmux
   args:
     - new-session
     - -A

@@ -43,7 +43,7 @@ wm-restack = i3
 
 # Top modules
 top-left = i3
-top-center = mpd
+top-center = mpd spotify
 top-right = keyboard backlight alsa battery network-short date
 
 # Bottom modules
