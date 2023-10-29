@@ -133,6 +133,7 @@
     neovim
     vimPlugins.packer-nvim
     tmux
+    tmuxPlugins.tmux-fzf
     ripgrep
     fd
     oh-my-zsh
@@ -159,29 +160,50 @@
     fira-code-symbols
     source-code-pro
     font-awesome
+    tmux-sessionizer
   ];
 
-programs.zsh = {
-  enable = true;
-  shellAliases = {
-    ll = "ls -l";
-    update = "sudo nixos-rebuild switch";
-  };
-  histSize = 10000;
-  histFile = "~/zsh/history";
-};
-  programs.zsh.ohMyZsh = {
+  programs.zsh = {
     enable = true;
-    plugins = ["git" "history" "man" "tmux"];
-    theme = "amuse";
+    shellAliases = {
+      ll = "ls -l";
+      update = "sudo nixos-rebuild switch";
+    };
+    histSize = 10000;
+    histFile = "~/.histfile";
+    ohMyZsh = {
+      enable = true;
+      plugins = ["git" "history" "man" "tmux"];
+      theme = "amuse";
+    };
   };
-
 
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+  };
+
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+    escapeTime = 0;
+    newSession = true;
+    baseIndex = 1;
+    plugins = with pkgs; [
+      tmuxPlugins.tmux-fzf
+    ];
+    extraConfig = ''
+      set -g default-terminal "alacritty"
+      set-option -g default-shell /run/current-system/sw/bin/zsh
+      set -ga terminal-overrides ",screen-256color*:Tc"
+      set-option -g default-terminal "screen-256color"
+      set-window-eption -g mode-keys vi
+      bind -T copy-mode-vi v send-keys -X begin-selection
+      bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+      # vim-like pane switching
+    '';
   };
 
   hardware.opengl.extraPackages = [
