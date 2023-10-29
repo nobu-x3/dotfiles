@@ -128,8 +128,10 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    gnumake
+    gcc
+    unzip
     git
-    cargo
     rustup
     jq
     wget
@@ -151,10 +153,16 @@
     python311
     feh
     cmake
-    llvmPackages_16.libllvm
-    llvmPackages_16.libcxx
-    llvmPackages_16.bintools
-    llvmPackages_16.libcxxClang
+    #llvmPackages_16.libllvm
+    #llvmPackages_16.libcxx
+    #llvmPackages_16.bintools
+    #llvmPackages_16.libcxxClang
+    llvmPackages_latest.lldb
+    gdb
+    clang-tools
+    llvmPackages_latest.libstdcxxClang
+    llvmPackages_latest.libllvm
+    llvmPackages_latest.libcxx
     nerdfonts
     noto-fonts
     noto-fonts-cjk
@@ -204,6 +212,7 @@
       set-option -g default-shell /run/current-system/sw/bin/zsh
       set -ga terminal-overrides ",screen-256color*:Tc"
       set-option -g default-terminal "screen-256color"
+      set-option -g mouse on
       set-window-option -g mode-keys vi
       bind-key -T copy-mode-vi v send-keys -X begin-selection
       bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
