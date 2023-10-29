@@ -70,7 +70,7 @@ ZSH_THEME="amuse"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z zsh-autosuggestions tmux man zsh-completion fzf)
+plugins=(git z zsh-autosuggestions tmux man fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -83,7 +83,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='vim'
+export EDITOR='nvim'
 # else
 #   export EDITOR='mvim'
 # fi
@@ -107,7 +107,7 @@ alias la='ls -la'
 export VISUAL="nvim"
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
-eval $(keychain --eval --quiet id_rsa)
+eval $(keychain --eval --quiet id_ed25519)
 # export PATH="$HOME/zig-bootstrap/out/zig-x86_64-linux-gnu-native/bin:$PATH"
 export PATH="$HOME/zig:$PATH"
 export PATH="$HOME/zls/zig-out/bin:$PATH"
