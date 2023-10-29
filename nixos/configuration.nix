@@ -111,6 +111,7 @@
   users.users.nobu = {
     isNormalUser = true;
     description = "Dominik Kurasbediani";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
@@ -128,6 +129,8 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git
+    cargo
+    rustup
     jq
     wget
     neovim
@@ -164,8 +167,11 @@
 
   programs.zsh = {
     enable = true;
+    enableCompletion = true;
+    enableAutosuggestions = true;
     shellAliases = {
       ll = "ls -l";
+      la = "ls -la";
       update = "sudo nixos-rebuild switch";
     };
     histSize = 10000;
