@@ -3,7 +3,7 @@ sudo pacman -S git neovim alacritty picom feh gtk3 htop pulseaudio dunst polybar
 yay -S nvim-packer-git obsidian-bin slack-desktop  --noconfirm
 
 # optional stuff
-yay -S armcord spotify obsidian-bin obs-studio-tytan652 python310 --noconfirm
+yay -S armcord spotify obsidian-bin obs-studio-tytan652 python310 python-pip python-neovim --noconfirm
 
 # fonts
 sudo pacman -S noto-fonts noto-fonts-emoji ttf-joypixels gnu-free-font ttf-cascadia-code ttf-fira-mono ttf-fira-code ttc-iosevka ttf-jetbrains-mono --noconfirm
