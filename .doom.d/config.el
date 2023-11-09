@@ -142,7 +142,7 @@
 (map! :n "{" #'c-beginning-of-defun)
 (map! :n "C-s" #'lsp-ui-imenu)
 (map! :n "C-e" #'lsp-ui-flycheck-list)
-(map! :n "C-." #'lsp-execute-code-action)
+(map! :n "C-a" #'lsp-execute-code-action)
 (map! :n "f g" nil)
 (map! :n "f g" #'consult-grep)
 (map! :n "C-n" nil)
@@ -171,9 +171,14 @@
 (after! centaur-tabs
   :ensure t
   :config
+  (centaur-tabs-group-by-projectile-project)
+  (centaur-tabs-enable-buffer-reordering)
   (setq centaur-tabs-mode 'over
+        centaur-tabs-height 32
         centaur-tabs-set-icons t
         centaur-tabs-gray-out-icons 'buffer
+        centaur-tabs-set-bar 'over
         centaur-tabs-set-modified-marker t
         centaur-tabs-modifier-marker "•")
-  (centaur-tabs-mode t))
+  (centaur-tabs-mode t)
+  )
