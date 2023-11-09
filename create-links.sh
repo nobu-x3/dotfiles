@@ -8,3 +8,4 @@ ln -s ~/dotfiles/.config/tmux ~/.config/tmux
 ln -s ~/dotfiles/.config/gtk-4.0 ~/.config/gtk-4.0
 ln -s ~/dotfiles/.config/gtk-3.0 ~/.config/gtk-3.0
 ln -s ~/dotfiles/.config/gtk-2.0 ~/.config/gtk-2.0
+ln -s ~/dotfiles/.doom.d ~/.config/doom
