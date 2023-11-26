@@ -1,0 +1,150 @@
+(setq inhibit-startup-message t)
+
+(scroll-bar-mode -1)        ; Disable visible scrollbar
+(tool-bar-mode -1)          ; Disable the toolbar
+(tooltip-mode -1)           ; Disable tooltips
+(set-fringe-mode 10)        ; Give some breathing room
+
+(menu-bar-mode -1)            ; Disable the menu bar
+
+;; Set up the visible bell
+(setq visible-bell t)
+;; Make ESC quit prompts
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+(setq org-directory "~/org/")
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(package-initialize)
+(setq package-selected-packages '(lsp-mode yasnippet lsp-treemacs helm-lsp
+    projectile hydra flycheck company avy which-key helm-xref dap-mode))
+
+(when (cl-find-if-not #'package-installed-p package-selected-packages)
+  (package-refresh-contents)
+  (mapc #'package-install package-selected-packages))
+
+;; Download Evil
+(unless (package-installed-p 'evil)
+  (package-install 'evil))
+
+;; Enable Evil
+(require 'evil)
+(evil-mode 1)
+
+(when (display-graphic-p)
+  (require 'all-the-icons))
+;; or
+(use-package all-the-icons
+  :if (display-graphic-p))
+
+(use-package doom-themes
+  :ensure t
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-dracula t)
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+
+;; sample `helm' configuration use https://github.com/emacs-helm/helm/ for details
+(helm-mode)
+(require 'helm-xref)
+(define-key global-map [remap find-file] #'helm-find-files)
+(define-key global-map [remap execute-extended-command] #'helm-M-x)
+(define-key global-map [remap switch-to-buffer] #'helm-mini)
+
+(which-key-mode)
+(add-hook 'c-mode-hook 'lsp)
+(add-hook 'c++-mode-hook 'lsp)
+
+(use-package centaur-tabs
+  :demand
+  :config
+  (centaur-tabs-group-by-projectile-project)
+  (centaur-tabs-enable-buffer-reordering)
+  (setq centaur-tabs-mode 'over
+        centaur-tabs-height 32
+        centaur-tabs-set-icons t
+        centaur-tabs-gray-out-icons 'buffer
+        centaur-tabs-set-bar 'over
+        centaur-tabs-set-modified-marker t
+        centaur-tabs-modifier-marker "•")
+  (centaur-tabs-mode t)
+  )
+(setq gc-cons-threshold (* 100 1024 1024)
+      read-process-output-max (* 1024 1024)
+      treemacs-space-between-root-nodes nil
+      company-idle-delay 0.0
+      company-minimum-prefix-length 1
+      lsp-idle-delay 0.1)  ;; clangd is fast
+
+(with-eval-after-load 'lsp-mode
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+  (require 'dap-cpptools)
+  (yas-global-mode))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(centaur-tabs doom-themes lsp-mode yasnippet lsp-treemacs helm-lsp projectile hydra flycheck company avy which-key helm-xref dap-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(setq user-full-name "Dominik Kurasbediani"
+      user-mail-address "dominik.kurasbediani@gmail.com"
+      projectile-project-search-path '("~/projects")
+      )
+(setq lsp-clients-clangd-args '(
+				"--background-index"
+				"--clang-tidy"
+				"--completion-style=detailed"
+				"--header-insertion=never"
+				"--header-insertion-decorators=0"))
+(setq flycheck-check-syntax-automatically '(mode-enabled save))
+(setq +format-with-lsp nil)
+
+(setq clang-format-style "file")
+(add-to-list 'default-frame-alist '(font . "Fira Code"))
+(set-face-attribute 'default t :font "Fira Code" :height 160)
+
+(evil-set-leader 'normal (kbd "<SPC>"))
+(evil-define-key 'normal 'global (kbd "<leader>r n") #'lsp-rename)
+(evil-define-key 'normal 'global (kbd "] d") #'next-error)
+(evil-define-key 'normal 'global (kbd "[ d") #'previous-error)
+(evil-define-key 'normal 'global (kbd "g h") #'lsp-clangd-find-other-file)
+(evil-define-key 'normal 'global (kbd "g t") nil)
+(evil-define-key 'normal 'global (kbd "g T") nil)
+(evil-define-key 'normal 'global (kbd "g t") #'next-buffer)
+(evil-define-key 'normal 'global (kbd "g T") #'previous-buffer)
+(evil-define-key 'normal 'global (kbd "g d") #'+lookup/definition)
+(evil-define-key 'normal 'global (kbd "g r") #'+lookup/references)
+(evil-define-key 'normal 'global (kbd "f f") #'find-file)
+(evil-define-key 'normal 'global (kbd "}") nil)
+(evil-define-key 'normal 'global (kbd "{") nil)
+(evil-define-key 'normal 'global (kbd "}") #'c-end-of-defun)
+(evil-define-key 'normal 'global (kbd "{") #'c-beginning-of-defun)
+(evil-define-key 'normal 'global (kbd "C-s") #'lsp-ui-imenu)
+(evil-define-key 'normal 'global (kbd "C-e") #'lsp-ui-flycheck-list)
+(evil-define-key 'normal 'global (kbd "C-a") #'lsp-execute-code-action)
+(evil-define-key 'normal 'global (kbd "f g") nil)
+(evil-define-key 'normal 'global (kbd "f g") #'consult-grep)
+(evil-define-key 'normal 'global (kbd "C-n") nil)
+(evil-define-key 'normal 'global (kbd "C-n") #'+treemacs/toggle)
+(evil-define-key 'normal 'global (kbd "C-q") #'kill-current-buffer)
+(evil-define-key 'normal 'global (kbd "<leader>f") #'lsp-format-buffer)

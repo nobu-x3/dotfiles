@@ -149,11 +149,6 @@
 (map! :n "C-n" #'+treemacs/toggle)
 (map! :n "C-q" #'kill-current-buffer)
 
-
-
-
-;;; Tree Sitter
-
 (use-package! tree-sitter
   :hook (prog-mode . turn-on-tree-sitter-mode)
   :hook (tree-sitter-after-on . tree-sitter-hl-mode)
@@ -163,6 +158,9 @@
   (setq tree-sitter-debug-jump-buttons t
         ;; and this highlights the entire sub tree in your code
         tree-sitter-debug-highlight-jump-region t))
+
+
+(setq doom-modeline-time t)
 
 
 (use-package! modern-cpp-font-lock
