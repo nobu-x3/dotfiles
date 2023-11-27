@@ -4,6 +4,7 @@
 (tool-bar-mode -1)          ; Disable the toolbar
 (tooltip-mode -1)           ; Disable tooltips
 (set-fringe-mode 10)        ; Give some breathing room
+(setq warning-minimum-level :emergency)
 
 (menu-bar-mode -1)            ; Disable the menu bar
 
@@ -17,8 +18,8 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
-(setq package-selected-packages '(lsp-mode yasnippet lsp-treemacs helm-lsp
-    projectile hydra flycheck company avy which-key helm-xref dap-mode))
+(setq package-selected-packages '(lsp-mode lsp-ui yasnippet  helm-lsp
+    projectile centaur-tabs evil all-the-icons doom-themes vterm vterm-toggle hydra flycheck company avy which-key helm-xref dap-mode))
 
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
@@ -48,11 +49,6 @@
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
@@ -83,10 +79,12 @@
   )
 (setq gc-cons-threshold (* 100 1024 1024)
       read-process-output-max (* 1024 1024)
-      treemacs-space-between-root-nodes nil
       company-idle-delay 0.0
       company-minimum-prefix-length 1
       lsp-idle-delay 0.1)  ;; clangd is fast
+
+(use-package vterm
+  :ensure t)
 
 (with-eval-after-load 'lsp-mode
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
@@ -98,7 +96,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(all-the-icons-nerd-fonts centaur-tabs doom-themes lsp-mode yasnippet lsp-treemacs helm-lsp projectile hydra flycheck company avy which-key helm-xref dap-mode)))
+   '(all-the-icons-nerd-fonts centaur-tabs doom-themes lsp-mode yasnippet helm-lsp projectile hydra flycheck company avy which-key helm-xref dap-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -132,8 +130,8 @@
 (evil-define-key 'normal 'global (kbd "g T") nil)
 (evil-define-key 'normal 'global (kbd "g t") #'next-buffer)
 (evil-define-key 'normal 'global (kbd "g T") #'previous-buffer)
-(evil-define-key 'normal 'global (kbd "g d") #'+lookup/definition)
-(evil-define-key 'normal 'global (kbd "g r") #'+lookup/references)
+(evil-define-key 'normal 'global (kbd "g d") #'lsp-find-definition)
+(evil-define-key 'normal 'global (kbd "g r") #'lsp-find-references)
 (evil-define-key 'normal 'global (kbd "f f") #'find-file)
 (evil-define-key 'normal 'global (kbd "}") nil)
 (evil-define-key 'normal 'global (kbd "{") nil)
@@ -145,6 +143,10 @@
 (evil-define-key 'normal 'global (kbd "f g") nil)
 (evil-define-key 'normal 'global (kbd "f g") #'consult-grep)
 (evil-define-key 'normal 'global (kbd "C-n") nil)
-(evil-define-key 'normal 'global (kbd "C-n") #'+treemacs/toggle)
 (evil-define-key 'normal 'global (kbd "C-q") #'kill-current-buffer)
 (evil-define-key 'normal 'global (kbd "<leader>f") #'lsp-format-buffer)
+
+(global-unset-key (kbd "C-SPC"))
+(global-set-key (kbd "C-SPC h p") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
+(global-set-key (kbd "C-SPC s p") (lambda () (interactive) (projectile-discover-projects-in-search-path) (projectile-switch-project)))
+(global-set-key [f2] 'vterm-toggle)

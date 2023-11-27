@@ -1,2 +1,4 @@
 .config/nvim/vim-plug
 .config/nvim/autoload
+.emacs.d/*
+!.emacs.d/init.el

@@ -1,1 +1,0 @@
-("~/projects/guccigedon/" "~/projects/vulkan-guide/" "~/projects/editor/" "~/projects/code-crimson/")
