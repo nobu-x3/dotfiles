@@ -197,7 +197,7 @@
 (evil-define-key 'normal 'global (kbd "g T") nil)
 (evil-define-key 'normal 'global (kbd "g t") #'next-buffer)
 (evil-define-key 'normal 'global (kbd "g T") #'previous-buffer)
-(evil-define-key 'normal 'global (kbd "g ?\t") #'switch-to-buffer)
+(evil-define-key 'normal 'global (kbd "<leader>gt") #'switch-to-buffer)
 (evil-define-key 'normal 'global (kbd "g d") #'lsp-find-definition)
 (evil-define-key 'normal 'global (kbd "g r") #'lsp-find-references)
 (evil-define-key 'normal 'global (kbd "f f") #'find-file)
