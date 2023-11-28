@@ -4,7 +4,8 @@
 (tool-bar-mode -1) ; Disable the toolbar
 (tooltip-mode -1) ; Disable tooltips
 (set-fringe-mode 10) ; Give some breathing room
-;(setq warning-minimum-level :emergency)
+
+;; (setq warning-minimum-level :emergency)
 
 (menu-bar-mode -1) ; Disable the menu bar
 
@@ -43,7 +44,8 @@
         evil-nerd-commenter
         suggest
         elisp-autofmt
-	deadgrep))
+        deadgrep
+	tree-sitter))
 
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
@@ -61,6 +63,7 @@
  :hook (emacs-lisp-mode . elisp-autofmt-mode))
 
 ;; Enable Evil
+(setq evil-undo-system 'undo-redo)
 (require 'evil)
 (evil-mode 1)
 
@@ -96,10 +99,11 @@
 (define-key global-map [remap switch-to-buffer] #'helm-mini)
 
 (which-key-mode)
-(add-hook 'c-mode-hook 'lsp)
-(add-hook 'c++-mode-hook 'lsp)
 
+(require 'tree-sitter)
 (defun c-mode-config ()
+  (lsp)
+  (tree-sitter-hl-mode)
   (evil-define-key 'normal 'global (kbd "}") nil)
   (evil-define-key 'normal 'global (kbd "{") nil)
   (evil-define-key 'normal 'global (kbd "}") #'c-end-of-defun)
@@ -143,7 +147,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(all-the-icons-nerd-fonts
+   '(tree-sitter-langs
+     tree-sitter
+     all-the-icons-nerd-fonts
      centaur-tabs
      doom-themes
      lsp-mode
