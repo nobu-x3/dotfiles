@@ -200,11 +200,12 @@
 (evil-define-key 'normal 'global (kbd "<leader>gt") #'switch-to-buffer)
 (evil-define-key 'normal 'global (kbd "g d") #'lsp-find-definition)
 (evil-define-key 'normal 'global (kbd "g r") #'lsp-find-references)
-(evil-define-key 'normal 'global (kbd "f f") #'find-file)
+(evil-define-key 'normal 'global (kbd "f f") #'projectile-find-file)
 (evil-define-key 'normal 'global (kbd "f g") nil)
 (evil-define-key 'normal 'global (kbd "f g") #'deadgrep)
 (evil-define-key 'normal 'global (kbd "C-s") #'lsp-ui-imenu)
 (evil-define-key 'normal 'global (kbd "C-e") #'lsp-ui-flycheck-list)
+(evil-define-key 'normal 'global (kbd "M-.") #'dired)
 (evil-define-key
  'normal 'global (kbd "C-a") #'lsp-execute-code-action)
 (evil-define-key 'normal 'global (kbd "C-n") nil)
