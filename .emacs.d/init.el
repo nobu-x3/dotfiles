@@ -118,6 +118,7 @@
  :demand
  :config
  (centaur-tabs-group-by-projectile-project)
+ (setq centaur-tabs-adjust-buffer-order 'right)
  (centaur-tabs-enable-buffer-reordering)
  (setq
   centaur-tabs-mode 'over
@@ -195,8 +196,8 @@
  'normal 'global (kbd "g h") #'lsp-clangd-find-other-file)
 (evil-define-key 'normal 'global (kbd "g t") nil)
 (evil-define-key 'normal 'global (kbd "g T") nil)
-(evil-define-key 'normal 'global (kbd "g t") #'next-buffer)
-(evil-define-key 'normal 'global (kbd "g T") #'previous-buffer)
+(evil-define-key 'normal 'global (kbd "g t") #'centaur-tabs-forward-tab)
+(evil-define-key 'normal 'global (kbd "g T") #'centaur-tabs-backward-tab)
 (evil-define-key 'normal 'global (kbd "<leader>gt") #'switch-to-buffer)
 (evil-define-key 'normal 'global (kbd "g d") #'lsp-find-definition)
 (evil-define-key 'normal 'global (kbd "g r") #'lsp-find-references)
@@ -205,6 +206,7 @@
 (evil-define-key 'normal 'global (kbd "f g") #'deadgrep)
 (evil-define-key 'normal 'global (kbd "C-s") #'lsp-ui-imenu)
 (evil-define-key 'normal 'global (kbd "C-e") #'lsp-ui-flycheck-list)
+(evil-define-key 'normal 'global (kbd "M-.") nil)
 (evil-define-key 'normal 'global (kbd "M-.") #'dired)
 (evil-define-key
  'normal 'global (kbd "C-a") #'lsp-execute-code-action)
