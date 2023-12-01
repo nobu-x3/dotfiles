@@ -214,6 +214,13 @@
 (evil-define-key 'normal 'global (kbd "C-q") #'kill-current-buffer)
 (evil-define-key
  'normal 'global (kbd "<leader>f") #'lsp-format-buffer)
+(evil-define-key 'normal 'global (kbd "<leader> d s") #'dap-debug)
+(evil-define-key 'normal 'global (kbd "<leader> d r") #'dap-debug-restart)
+(evil-define-key 'normal 'global (kbd "<leader> d b") #'dap-breakpoint-toggle)
+(evil-define-key 'normal 'global (kbd "<leader> d n") #'dap-next)
+(evil-define-key 'normal 'global (kbd "<leader> d i") #'dap-step-in)
+(evil-define-key 'normal 'global (kbd "<leader> d o") #'dap-step-out)
+(evil-define-key 'normal 'global (kbd "<leader> d h") #'dap-hydra)
 
 (global-unset-key (kbd "C-SPC"))
 (defun open-config ()
