@@ -189,6 +189,8 @@
 (set-face-attribute 'default t :font "Fira Code" :height 160)
 
 (evil-set-leader 'normal (kbd "<SPC>"))
+; (evil-define-key 'normal 'global (kbd "]]") #'forward-paragraph)
+; (evil-define-key 'normal 'global (kbd "[[") #'backward-paragraph)
 (evil-define-key 'normal 'global (kbd "f") #'evil-find-char)
 (evil-define-key 'normal 'global (kbd "<leader>r n") #'lsp-rename)
 (evil-define-key 'normal 'global (kbd "] d") #'next-error)
@@ -212,6 +214,7 @@
 (evil-define-key
  'normal 'global (kbd "C-a") #'lsp-execute-code-action)
 (evil-define-key 'normal 'global (kbd "C-n") nil)
+(evil-define-key 'normal 'global (kbd "C-n") #'treemacs)
 (evil-define-key 'normal 'global (kbd "C-q") #'kill-current-buffer)
 (evil-define-key
  'normal 'global (kbd "<leader>F") #'lsp-format-buffer)
