@@ -204,10 +204,11 @@ set colorcolumn=81
 set completeopt=menuone,noinsert,noselect
 " let g:completion_enable_auto_popup = 1
 if exists("g:neovide")
-    let g:neovide_refresh_rate = 60
-    set guifont=Source\ Code\ Pro:h12
+    let g:neovide_refresh_rate = 120
+    " set guifont=Source\ Code\ Pro:h12
     let g:neovide_cursor_animation_length = 0.04
     let g:neovide_cursor_trail_size = 0.2
+    let g:neovide_cursor_antialiasing = v:true
 endif
 nnoremap - $
 nnoremap _ ^
