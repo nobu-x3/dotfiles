@@ -45,7 +45,9 @@
         suggest
         elisp-autofmt
         deadgrep
-	tree-sitter))
+	tree-sitter
+	magit
+	))
 
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
