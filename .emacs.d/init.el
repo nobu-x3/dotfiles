@@ -31,7 +31,6 @@
         evil
         all-the-icons
         doom-themes
-        vterm
         vterm-toggle
         hydra
         flycheck
@@ -48,7 +47,8 @@
 	tree-sitter
 	magit
 	))
-
+(if (eq system-type 'windows-nt)
+    (add-to-list 'vterm))
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
   (mapc #'package-install package-selected-packages))
