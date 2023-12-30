@@ -1,0 +1,28 @@
+import = ["/home/nobu/.config/alacritty/dracula.toml"]
+
+[cursor.style]
+shape = "Beam"
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "Fira Code"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Control|Shift"
+
+[shell]
+args = ["new-session", "-A", "-D", "-s", "main"]
+program = "/bin/tmux"
+
+[window]
+decorations = "full"
+dynamic_padding = true
+opacity = 0.95
+
+[window.padding]
+x = 6
+y = 5
