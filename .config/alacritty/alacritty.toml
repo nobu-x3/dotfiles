@@ -7,7 +7,7 @@ shape = "Beam"
 size = 14.0
 
 [font.normal]
-family = "Fira Code"
+family = "FiraMono Nerd Font"
 
 [[keyboard.bindings]]
 action = "SpawnNewInstance"
@@ -15,8 +15,7 @@ key = "Return"
 mods = "Control|Shift"
 
 [shell]
-args = ["new-session", "-A", "-D", "-s", "main"]
-program = "/bin/tmux"
+program = "/bin/zsh"
 
 [window]
 decorations = "full"

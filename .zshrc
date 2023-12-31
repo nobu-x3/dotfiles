@@ -108,7 +108,7 @@ alias jai='jai-linux'
 export VISUAL="nvim"
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
-eval $(keychain --eval --quiet id_ed25519)
+eval $(keychain --eval --quiet id_rsa)
 # export PATH="$HOME/zig-bootstrap/out/zig-x86_64-linux-gnu-native/bin:$PATH"
 export PATH="$HOME/zig:$PATH"
 export PATH="$HOME/zls/zig-out/bin:$PATH"
