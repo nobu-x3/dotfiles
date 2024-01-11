@@ -58,32 +58,7 @@ augroup END
 autocmd VimEnter * TSEnable highlight
 " fzf-vim
 set rtp+=/bin/
-noremap <leader>fz :FZF<cr>
 
-" Open corresponding .pdf/.html or preview
-map <leader>0 :!opout <c-r>%<CR>
-
-" compile, make, create, do shit!
-map <leader>m :w! \| !compiler "<c-r>%"
-
-" disabling auto-comment by default
-" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-""" external copy-paste
-noremap <leader>p :-1r !xclip -o -sel clip<CR>
-noremap <leader>y :'<,'>w !xclip -selection clipboard<CR><CR>
-
-" floaterm for python console
-" set splitbelow
-" autocmd FileType python map <buffer> <F10> :w<CR> :split term://python %<CR>i
-" autocmd FileType python map <buffer> <F10> :w<CR> :cd %:p:h <CR> :FloatermNew python %<CR>
-
-" config for buffers
-" nmap <leader>t :enew " i don't think i need this
-nmap <silent>gt :bn<CR>
-nmap <silent>gT :bp<CR>
-nmap <C-q> :bp <BAR> bd #<CR>
-nmap <leader>bl :buffers<cr>:b<space>
 
 " run python scripts
 " autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
@@ -93,30 +68,13 @@ nmap <leader>bl :buffers<cr>:b<space>
 set noshowmode
 set number relativenumber
 
-" Shortcutting split navigation
-map <A-h> <C-w>h
-map <A-j> <C-w>j
-map <A-k> <C-w>k
-map <A-l> <C-w>l
-
-" Enable and disable auto comment
-" map <leader>c :setlocal formatoptions-=cro<CR>
-" map <leader>C :setlocal formatoptions=cro<CR>
-
-" Enable spell checking, s for spell check
-map <leader>s :setlocal spell! spelllang=en_us<CR>
-
-" Enable Disable Auto Indent
-map <leader>i :setlocal autoindent<CR>
-map <leader>I :setlocal noautoindent<CR>
-
 """ For Plugins
 
 " " floaterm configs
 " let g:floaterm_winblend = 8
 
-nnoremap   <silent>   <F2>   :ToggleTerm<CR>
-tnoremap   <silent>   <F2>   <C-\><C-n>:ToggleTerm<CR>
+"nnoremap   <silent>   <F2>   :ToggleTerm<CR>
+"tnoremap   <silent>   <F2>   <C-\><C-n>:ToggleTerm<CR>
 " nnoremap   <silent>   <F2>   :FloatermNew<CR>
 " tnoremap   <silent>   <F2>   <C-\><C-n>:FloatermNew<CR>
 " nnoremap   <silent>   <F3>   :FloatermNext<CR>
@@ -125,11 +83,7 @@ tnoremap   <silent>   <F2>   <C-\><C-n>:ToggleTerm<CR>
 " tnoremap   <silent>   <Esc><Esc>   <C-\><C-n>:FloatermToggle<CR>
 " tnoremap   <silent>   <F4>   <C-\><C-n>:FloatermKill<CR>
 
-nnoremap <silent><F9> :lua require('dap').toggle_breakpoint()<cr>
-nnoremap <silent><F5> :lua require('dap').continue()<cr>
-nnoremap <silent><F10> :lua require('dap').step_over()<cr>
-nnoremap <silent><F11> :lua require('dap').step_into()<cr>
-nnoremap <silent><F6> :lua require('dap').repl.open()<cr>
+
 " hexokinase configs
 nnoremap <F12> :HexokinaseToggle<CR>
 
@@ -162,6 +116,7 @@ if has('win32')
     " luafile ~\AppData\Local\nvim\ui.lua
     luafile ~\AppData\Local\nvim\treesitterconfig.lua
     luafile ~\AppData\Local\nvim\vimspector.lua
+    luafile ~\AppData\Local\nvim\remap.lua
 endif
 
 if has('unix')
@@ -170,34 +125,20 @@ if has('unix')
     " luafile ~/.config/nvim/ui.lua
     luafile ~/.config/nvim/treesitterconfig.lua
     luafile ~/.config/nvim/vimspector.lua
+    luafile ~/.config/nvim/remap.lua
 endif
 
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 
-" nvim-telescope
-nnoremap ff <cmd>Telescope find_files<cr>
-nnoremap fg <cmd>Telescope live_grep<cr>
-nnoremap fb <cmd>Telescope buffers<cr>
-nnoremap fh <cmd>Telescope help_tags<cr>
-
-" buffer pick
-nnoremap <leader>bb <cmd>BufferLinePick<cr>
-
-nnoremap <silent> gb :BufferLinePick<CR>
-
 " switch between header and src file in C++
 autocmd FileType c,h,cpp,hpp nnoremap <buffer> <silent> gh :ClangdSwitchSourceHeader<CR>
-
-" keybindings for nvimtree
-nnoremap <C-n> :NvimTreeToggle<CR> " change this
-" nnoremap <leader>n :NvimTreeFindFile<CR> # to specific to have a keybinding for now
 
 let g:rustfmt_autosave = 1
 syntax on
 " indentLine char
-let g:indentLine_char = '│'
+let g:indentLine_char = '│':
 
 " limit at 80 char
 set colorcolumn=81
@@ -213,4 +154,4 @@ endif
 nnoremap - $
 nnoremap _ ^
 colorscheme moonfly
-hi Pmenu guibg='black'
+" menu guibg='black'

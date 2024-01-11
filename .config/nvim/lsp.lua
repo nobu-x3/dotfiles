@@ -125,7 +125,6 @@ rt.setup(
 )
 
 rt.inlay_hints.enable()
-local zt = require('zig-tools').setup()
 -- local setup_jails = function()
 --     vim.lsp.start({
 --         cmd = { 'jails -jai_path ~/jai' },

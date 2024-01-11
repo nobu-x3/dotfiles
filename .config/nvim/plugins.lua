@@ -38,7 +38,6 @@ require('packer').startup(function(use)
         require("toggleterm").setup()
     end }
     use 'ziglang/zig.vim'
-    use 'NTBBloodbath/zig-tools.nvim'
 
     -- nvim-cmp has a lot of dependencies
     use 'hrsh7th/cmp-nvim-lsp'
