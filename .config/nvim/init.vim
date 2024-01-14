@@ -138,7 +138,7 @@ autocmd FileType c,h,cpp,hpp nnoremap <buffer> <silent> gh :ClangdSwitchSourceHe
 let g:rustfmt_autosave = 1
 syntax on
 " indentLine char
-let g:indentLine_char = '│':
+let g:indentLine_char = '│'
 
 " limit at 80 char
 set colorcolumn=81

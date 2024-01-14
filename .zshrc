@@ -70,7 +70,7 @@ ZSH_THEME="amuse"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z zsh-autosuggestions tmux man fzf)
+plugins=(git z zsh-autosuggestions man fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -108,6 +108,8 @@ alias jai='jai-linux'
 export VISUAL="nvim"
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
+# export CC=/usr/bin/gcc
+# export CXX=/usr/bin/g++
 eval $(keychain --eval --quiet id_rsa)
 # export PATH="$HOME/zig-bootstrap/out/zig-x86_64-linux-gnu-native/bin:$PATH"
 export PATH="$HOME/zig:$PATH"
