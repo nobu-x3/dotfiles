@@ -11,17 +11,18 @@ vim.keymap.set("n", "<leader>fz", ":FZF<CR>")
 vim.keymap.set("n", "<leader>p", ":-1r !xclip -o -sel clip<CR>")
 vim.keymap.set("n", "<leader>y", ":'<,'>w !xclip -selection clipboard<CR><CR>")
 -- config for buffers
-vim.keymap.set("n", "<silent>gt", ":bn<CR>")
-vim.keymap.set("n", "<silent>gT", ":bp<CR>")
+vim.keymap.set("n", "gt", ":bn<CR>")
+vim.keymap.set("n", "gT", ":bp<CR>")
 vim.keymap.set("n", "<C-q> :bp", "<BAR> bd #<CR>")
 vim.keymap.set("n", "<leader>bl", ":buffers<cr>:b<space>")
 -- Shortcutting split navigation
 vim.keymap.set("n", "<A-h>", "<C-w>h")
 vim.keymap.set("n", "<A-j>", "<C-w>j")
-vim.keymap.set("n", "<A-k>z", "<C-w>k")
+vim.keymap.set("n", "<A-k>", "<C-w>k")
 vim.keymap.set("n", "<A-l>", "<C-w>l")
 -- toggle term
 vim.keymap.set("n", "<F2>", ":ToggleTerm<CR>")
+vim.keymap.set("t", "<F2>", "<C-\\><C-n>:ToggleTerm<CR>")
 -- nvim-telescope
 vim.keymap.set("n", "ff", "<cmd>Telescope find_files<cr>")
 vim.keymap.set("n", "fg", "<cmd>Telescope live_grep<cr>")
