@@ -137,26 +137,26 @@ rt.inlay_hints.enable()
 --     group = generalSettingsGroup,
 -- })
 local configs = require 'lspconfig.configs'
-if not configs.jails then
-    configs.jails = {
-        default_config = {
-            cmd = { 'jails', ' -jai_path ~/jai'},
-            filetypes = { 'jai' },
-            root_dir = function(fname)
-                return lsp_config.util.find_git_ancestor(fname)
-            end,
-            settings = {},
-        },
-    }
-end
-lsp_config.jails.setup({
-    on_attach = on_attach,
-    flags = {
-        -- This will be the default in neovim 0.7+
-        debounce_text_changes = 150,
-    },
-    capabilities = capabilities,
-})
+-- if not configs.jails then
+--     configs.jails = {
+--         default_config = {
+--             cmd = { 'jails', ' -jai_path ~/jai'},
+--             filetypes = { 'jai' },
+--             root_dir = function(fname)
+--                 return lsp_config.util.find_git_ancestor(fname)
+--             end,
+--             settings = {},
+--         },
+--     }
+-- end
+-- lsp_config.jails.setup({
+--     on_attach = on_attach,
+--     flags = {
+--         -- This will be the default in neovim 0.7+
+--         debounce_text_changes = 150,
+--     },
+--     capabilities = capabilities,
+-- })
 -- vim.tbl_deep_extend('keep', lsp_config, {
 --     jails = {
 --         cmd = { 'jails', ' -jai_path ~/jai' },
