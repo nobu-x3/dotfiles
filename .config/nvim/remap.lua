@@ -13,7 +13,7 @@ vim.keymap.set("n", "<leader>y", ":'<,'>w !xclip -selection clipboard<CR><CR>")
 -- config for buffers
 vim.keymap.set("n", "gt", ":bn<CR>")
 vim.keymap.set("n", "gT", ":bp<CR>")
-vim.keymap.set("n", "<C-q> :bp", "<BAR> bd #<CR>")
+vim.keymap.set("n", "<C-q>", ":bp <CR> :bd #<CR>")
 vim.keymap.set("n", "<leader>bl", ":buffers<cr>:b<space>")
 -- Shortcutting split navigation
 vim.keymap.set("n", "<A-h>", "<C-w>h")
