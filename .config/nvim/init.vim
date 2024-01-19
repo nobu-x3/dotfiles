@@ -126,6 +126,7 @@ if has('unix')
     luafile ~/.config/nvim/treesitterconfig.lua
     luafile ~/.config/nvim/vimspector.lua
     luafile ~/.config/nvim/remap.lua
+    " luafile ~/.config/nvim/adapter-definitions.lua
 endif
 
 " Exit Vim if NERDTree is the only window left.

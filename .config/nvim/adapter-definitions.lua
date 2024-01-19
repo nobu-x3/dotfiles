@@ -2,7 +2,13 @@ local dap = require('dap')
 dap.adapters.cppdbg = {
   id = 'cppdbg',
   type = 'executable',
-  command = '/home/nobu/Downloads/cpp/extension/debugAdapters/bin/OpenDebugAD7',
+  command = '/usr/bin/gdb',
+}
+
+dap.adapters.lldb = {
+    type = "executable",
+    command = '/usr/bin/lldb',
+    name = 'lldb',
 }
 
 dap.configurations.cpp = {
@@ -29,3 +35,17 @@ dap.configurations.cpp = {
     end,
   },
 }
+-- dap.configurations.jai = {
+--   {
+--     name = "Launch lldb",
+--     type = "lldb",
+--     request = "launch",
+--     program = function()
+--       return vim.fn.input('Path to executable: ', 'bin/' .. vim.fn.getcwd() .. '/', 'file')
+--     end,
+--     cwd = '${workspaceFolder}/bin',
+--     stopAtEntry = false,
+--     args = {},
+--     runInTerminal = false,
+--   },
+-- }
