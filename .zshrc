@@ -123,6 +123,7 @@ export PATH="$HOME/Qt:$HOME/Qt/Tools/QtCreator/bin:$HOME/Qt/Tools/QtDesignStudio
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/jai_compiler/bin:$PATH"
 export PATH="$HOME/jai_compiler/Jails/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 #export VULKAN_SDK="/nix/store/nzz1vdvyp3b00gvc6hq48g2z5yml9zjx-vulkan-headers-1.3.249:$VULKAN_SDK"
 #export VULKAN_SDK="/nix/store/hrvx0baps9xhfzb2lv71di4hbqvcr7fz-vulkan-loader-1.3.249:$VULKAN_SDK"
 #export VULKAN_SDK="/nix/store/kinq12hayd004zfwmndfif158m7hd8fp-vulkan-validation-layers-1.3.249:$VULKAN_SDK"
