@@ -71,6 +71,7 @@ require('packer').startup(function(use)
     use 'mfussenegger/nvim-dap'
     use 'MunifTanjim/nui.nvim'
     use 'rcarriga/nvim-notify'
+    use 'nobu-x3/p4.nvim'
 end)
 
 

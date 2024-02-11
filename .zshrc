@@ -130,3 +130,4 @@ export PATH="$HOME/.cargo/bin:$PATH"
 #export VULKAN_SDK="/nix/store/17za1lldv8jxgfa493n5d7kjhpirx46r-vulkan-validation-layers-1.3.249-headers:$VULKAN_SDK"
 #export VULKAN_SDK="/nix/store/76zm8yzdyd2hvwrja38c0s2fngxxdbn0-vulkan-extension-layer-1.3.248:$VULKAN_SDK"
 source ~/vulkanSDK/setup-env.sh
+source ~/.p4config
