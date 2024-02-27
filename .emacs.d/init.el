@@ -9,6 +9,7 @@
 
 (menu-bar-mode -1) ; Disable the menu bar
 
+
 ;; Set up the visible bell
 (setq visible-bell t)
 ;; Make ESC quit prompts
@@ -45,7 +46,7 @@
         elisp-autofmt
         deadgrep
 	tree-sitter
-	magit
+	zig-mode
 	))
 (if (eq system-type 'windows-nt)
     (add-to-list 'vterm))
@@ -177,6 +178,7 @@
  user-full-name "Dominik Kurasbediani"
  user-mail-address "dominik.kurasbediani@gmail.com"
  projectile-project-search-path '("~/projects"))
+
 (setq lsp-clients-clangd-args
       '("--background-index"
         "--clang-tidy"
@@ -244,3 +246,17 @@
 
 (global-set-key [f2] 'vterm-toggle)
 (electric-pair-mode)
+
+(add-to-list 'load-path "~/.emacs.d/plugins_submodules/p4.el")
+(require 'p4)
+(evil-define-key 'normal 'global (kbd "<leader> p a") #'p4-add)
+(evil-define-key 'normal 'global (kbd "<leader> p c") #'p4-client)
+(evil-define-key 'normal 'global (kbd "<leader> p e") #'p4-edit)
+(evil-define-key 'normal 'global (kbd "<leader> p s") #'p4-submit)
+(evil-define-key 'normal 'global (kbd "<leader> p u") #'p4-update)
+
+(projectile-register-project-type 'zig '("build.zig")
+				  :project-file "build.zig"
+				  :compile "zig build"
+				  :run "zig build run"
+				  :test "zig test")
