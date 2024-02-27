@@ -1,19 +1,97 @@
-(setq inhibit-startup-message t)
+(setq package-enable-at-startup nil
+      inhibit-startup-message   t
+      frame-resize-pixelwise    t  ; fine resize
+      package-native-compile    t) ; native compile packages
+(scroll-bar-mode -1)               ; disable scrollbar
+(tool-bar-mode -1)                 ; disable toolbar
+(tooltip-mode -1)                  ; disable tooltips
+(set-fringe-mode 10)               ; give some breathing room
+(menu-bar-mode -1)                 ; disable menubar
+(blink-cursor-mode 0)              ; disable blinking cursor
+(setq frame-inhibit-implied-resize t)
+(setq inhibit-compacting-font-caches t)
+(defvar file-name-handler-alist-original file-name-handler-alist)
 
-(scroll-bar-mode -1) ; Disable visible scrollbar
-(tool-bar-mode -1) ; Disable the toolbar
-(tooltip-mode -1) ; Disable tooltips
-(set-fringe-mode 10) ; Give some breathing room
+;; Every file opened and loaded by Emacs will run through this list to check for a proper handler for the file, but during startup, it won’t need any of them.
+(setq file-name-handler-alist nil)
+(setq site-run-file nil)
 
-;; (setq warning-minimum-level :emergency)
+;; defer garbage collection
+(setq gc-cons-threshold 100000000)
 
-(menu-bar-mode -1) ; Disable the menu bar
-
-
-;; Set up the visible bell
-(setq visible-bell t)
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+;; Set gc-cons-threshold Smaller for Interactive Use
+;; A large gc-cons-threshold may cause freezing and stuttering during long-term interactive use. If you experience freezing, decrease this amount, if you experience stuttering, increase this amount.
+(defvar better-gc-cons-threshold (* 128 1024 1024) ; 128mb
+  "The default value to use for `gc-cons-threshold'.
+
+If you experience freezing, decrease this.  If you experience stuttering, increase this.")
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold better-gc-cons-threshold)
+            (setq file-name-handler-alist file-name-handler-alist-original)
+            (makunbound 'file-name-handler-alist-original)))
+
+;; Garbage Collect when Emacs is out of focus and avoid garbage collection when using minibuffer.
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (if (boundp 'after-focus-change-function)
+                (add-function :after after-focus-change-function
+                              (lambda ()
+                                (unless (frame-focus-state)
+                                  (garbage-collect))))
+              (add-hook 'after-focus-change-function 'garbage-collect))
+            (defun gc-minibuffer-setup-hook ()
+              (setq gc-cons-threshold (* better-gc-cons-threshold 2)))
+
+            (defun gc-minibuffer-exit-hook ()
+              (garbage-collect)
+              (setq gc-cons-threshold better-gc-cons-threshold))
+
+            (add-hook 'minibuffer-setup-hook #'gc-minibuffer-setup-hook)
+            (add-hook 'minibuffer-exit-hook #'gc-minibuffer-exit-hook)))
+
+(setq
+ user-full-name "Dominik Kurasbediani"
+ user-mail-address "dominik.kurasbediani@gmail.com"
+ user-login-name "nobu")
+
+;; I never want to keep trailing spaces in my files, which is why I’m doing this:
+(add-hook 'before-save-hook #'whitespace-cleanup)
+
+;; I don’t understand why some people add two spaces behind a full stop, I sure don’t. Let’s tell Emacs.
+(setq-default sentence-end-double-space nil)
+
+;; There is a minor mode in Emacs which allows having a finer way of jumping from word to word: global-subword-mode. It detects if what Emacs usually considers a word can be understood as several words, as in camelCase words, and allows us to jump words on this finer level.
+(global-subword-mode 1)
+
+;;Lastly, I want the default mode for Emacs to be Emacs Lisp.
+(setq-default initial-major-mode 'emacs-lisp-mode)
+
+;; Indentation
+(setq-default indent-tabs-mode nil)
+(add-hook 'prog-mode-hook (lambda () (setq indent-tabs-mode nil)))
+
+;; As nice as Emacs is, it isn’t very polite or clean by default: open a file, and it will create backup files in the same directory. But then, when you open your directory with your favourite file manager and see almost all of your files duplicated with a ~ appended to the filename, it looks really uncomfortable! This is why I prefer to tell Emacs to keep its backup files to itself in a directory it only will access.
+(setq backup-directory-alist `(("." . ,(expand-file-name ".tmp/backups/"
+                                                         user-emacs-directory))))
+;; It also loves to litter its init.el with custom variables here and there, but the thing is: I regenerate my init.el each time I tangle this file! How can I keep Emacs from adding stuff that will be almost immediately lost? Did someone say custom file?
+(setq-default custom-file (expand-file-name ".custom.el" user-emacs-directory))
+(when (file-exists-p custom-file) ; Don’t forget to load it, we still need it
+  (load custom-file))
+
+(setq-default initial-scratch-message nil)
+
+(setq undo-limit        100000000)
+
+(setq window-combination-resize t) ; take new window space from all other windows
+
+;; Visual stuff
+(setq visible-bell t)
+(setq x-stretch-cursor t)
+
 
 (setq org-directory "~/org/")
 
@@ -45,11 +123,11 @@
         suggest
         elisp-autofmt
         deadgrep
-	tree-sitter
-	zig-mode
-	))
-(if (eq system-type 'windows-nt)
-    (add-to-list 'vterm))
+        tree-sitter
+        zig-mode
+        ))
+; (if (eq system-type 'windows-nt)
+;     (add-to-list 'vterm))
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
   (mapc #'package-install package-selected-packages))
@@ -174,10 +252,7 @@
  ;; If there is more than one, they won't work right.
  )
 
-(setq
- user-full-name "Dominik Kurasbediani"
- user-mail-address "dominik.kurasbediani@gmail.com"
- projectile-project-search-path '("~/projects"))
+ (setq projectile-project-search-path '("~/projects"))
 
 (setq lsp-clients-clangd-args
       '("--background-index"
@@ -255,8 +330,63 @@
 (evil-define-key 'normal 'global (kbd "<leader> p s") #'p4-submit)
 (evil-define-key 'normal 'global (kbd "<leader> p u") #'p4-update)
 
-(projectile-register-project-type 'zig '("build.zig")
-				  :project-file "build.zig"
-				  :compile "zig build"
-				  :run "zig build run"
-				  :test "zig test")
+;; (projectile-register-project-type 'zig '("build.zig")
+;;                                :project-file "build.zig"
+;;                                :compile "zig build"
+;;                                :run "zig build run"
+;;                                :test "zig test")
+
+(use-package dap-mode
+             :after lsp
+             :defer t
+             :config
+             (dap-ui-mode)
+             (dap-ui-controls-mode 1)
+             (add-hook 'dap-stopped-hook
+                       (lambda(arg)(call-interactively #'dap-hydra)))
+             :init
+             ;; zig
+             (with-eval-after-load 'zig-mode
+                                   (require 'dap-lldb)
+                                   (require 'dap-gdb-lldb)
+                (dap-register-debug-template
+                  "Zig::LLDB Run"
+                  (list :type "lldb"
+                        :request "launch"
+                        :name "LLDB::Run"
+                        :program "${workspaceFolder}/bin/sandbox"
+                        :cwd "${workspaceFolder}")
+                  )
+             )
+)
+
+;; EmacsLisp
+ (use-package eldoc
+   :defer t
+   :after company
+   :init
+   (eldoc-add-command 'company-complete-selection
+                      'company-complete-common
+                      'company-capf
+                      'company-abort))
+ (use-package elisp-mode
+   :requires smartparens
+   :config
+   (add-hook 'emacs-lisp-mode-hook (lambda () (smartparens-mode -1))))
+
+;; Modeline
+(require 'time)
+(setq display-time-format "%Y-%m-%d %H:%M")
+(display-time-mode 1) ; display time in modeline
+(column-number-mode)
+
+;; Frame title
+(setq frame-title-format
+      '(""
+        "%b"
+        (:eval
+         (let ((project-name (projectile-project-name)))
+           (unless (string= "-" project-name)
+             (format (if (buffer-modified-p) " ◉ %s" "  ●  %s - Emacs") project-name))))))
+
+(projectile-mode +1)
