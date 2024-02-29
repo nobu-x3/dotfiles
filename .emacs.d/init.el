@@ -11,7 +11,7 @@
 (setq frame-inhibit-implied-resize t)
 (setq inhibit-compacting-font-caches t)
 (defvar file-name-handler-alist-original file-name-handler-alist)
-
+(setopt use-short-answers t)
 ;; Every file opened and loaded by Emacs will run through this list to check for a proper handler for the file, but during startup, it won’t need any of them.
 (setq file-name-handler-alist nil)
 (setq site-run-file nil)
@@ -21,6 +21,8 @@
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+(global-set-key [f2] 'eshell)
 
 ;; Set gc-cons-threshold Smaller for Interactive Use
 ;; A large gc-cons-threshold may cause freezing and stuttering during long-term interactive use. If you experience freezing, decrease this amount, if you experience stuttering, increase this amount.
@@ -110,7 +112,6 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
         evil
         all-the-icons
         doom-themes
-        vterm-toggle
         hydra
         flycheck
         company
@@ -126,8 +127,6 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
         tree-sitter
         zig-mode
         ))
-; (if (eq system-type 'windows-nt)
-;     (add-to-list 'vterm))
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
   (mapc #'package-install package-selected-packages))
@@ -217,7 +216,6 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
  company-minimum-prefix-length 1
  lsp-idle-delay 0.1) ;; clangd is fast
 
-(use-package vterm :ensure t)
 
 (with-eval-after-load 'lsp-mode
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
@@ -283,7 +281,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (evil-define-key 'normal 'global (kbd "<leader>gt") #'switch-to-buffer)
 (evil-define-key 'normal 'global (kbd "g d") #'lsp-find-definition)
 (evil-define-key 'normal 'global (kbd "g r") #'lsp-find-references)
-(evil-define-key 'normal 'global (kbd "<leader> f f") #'projectile-find-file)
+(evil-define-key 'normal 'global (kbd "<leader> f f") #'helm-find-files)
 (evil-define-key 'normal 'global (kbd "<leader> f g") nil)
 (evil-define-key 'normal 'global (kbd "<leader> f g") #'deadgrep)
 (evil-define-key 'normal 'global (kbd "C-s") #'lsp-ui-imenu)
@@ -304,6 +302,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (evil-define-key 'normal 'global (kbd "<leader> d i") #'dap-step-in)
 (evil-define-key 'normal 'global (kbd "<leader> d o") #'dap-step-out)
 (evil-define-key 'normal 'global (kbd "<leader> d h") #'dap-hydra)
+(evil-define-key 'normal 'global (kbd "<leader> .") #'dired)
 
 (global-unset-key (kbd "C-SPC"))
 (defun open-config ()
@@ -319,7 +318,6 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (evil-define-key
  'normal 'global (kbd "<leader> s p") #'switch-project)
 
-(global-set-key [f2] 'vterm-toggle)
 (electric-pair-mode)
 
 (add-to-list 'load-path "~/.emacs.d/plugins_submodules/p4.el")
@@ -329,6 +327,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (evil-define-key 'normal 'global (kbd "<leader> p e") #'p4-edit)
 (evil-define-key 'normal 'global (kbd "<leader> p s") #'p4-submit)
 (evil-define-key 'normal 'global (kbd "<leader> p u") #'p4-update)
+()
 
 ;; (projectile-register-project-type 'zig '("build.zig")
 ;;                                :project-file "build.zig"
