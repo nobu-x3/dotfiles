@@ -22,7 +22,6 @@
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-(global-set-key [f2] 'eshell)
 
 ;; Set gc-cons-threshold Smaller for Interactive Use
 ;; A large gc-cons-threshold may cause freezing and stuttering during long-term interactive use. If you experience freezing, decrease this amount, if you experience stuttering, increase this amount.
@@ -75,6 +74,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 ;; Indentation
 (setq-default indent-tabs-mode nil)
 (add-hook 'prog-mode-hook (lambda () (setq indent-tabs-mode nil)))
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
 ;; As nice as Emacs is, it isn’t very polite or clean by default: open a file, and it will create backup files in the same directory. But then, when you open your directory with your favourite file manager and see almost all of your files duplicated with a ~ appended to the filename, it looks really uncomfortable! This is why I prefer to tell Emacs to keep its backup files to itself in a directory it only will access.
 (setq backup-directory-alist `(("." . ,(expand-file-name ".tmp/backups/"
@@ -126,10 +126,15 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
         deadgrep
         tree-sitter
         zig-mode
+        vterm
+        vterm-toggle
         ))
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
   (mapc #'package-install package-selected-packages))
+
+;; vterm stuff
+(global-set-key [f2] 'vterm-toggle)
 
 ;; Download Evil
 (unless (package-installed-p 'evil)
@@ -356,6 +361,14 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
                         :program "${workspaceFolder}/bin/sandbox"
                         :cwd "${workspaceFolder}")
                   )
+                (dap-register-debug-template
+                  "Jai::LLDB Run"
+                  (list :type "lldb"
+                        :request "launch"
+                        :name "LLDB::Run"
+                        :program "${workspaceFolder}/bin/sandbox"
+                        :cwd "${workspaceFolder}")
+                  )
              )
 )
 
@@ -389,3 +402,5 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
              (format (if (buffer-modified-p) " ◉ %s" "  ●  %s - Emacs") project-name))))))
 
 (projectile-mode +1)
+
+(require 'jai-mode "~/.emacs.d/jai-mode.el")
