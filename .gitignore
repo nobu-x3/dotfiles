@@ -2,3 +2,6 @@
 .config/nvim/autoload
 .emacs.d/*
 !.emacs.d/init.el
+!.emacs.d/themes
+!.emacs.d/plugins_submodules
+!.emacs.d/jai-mode.el
