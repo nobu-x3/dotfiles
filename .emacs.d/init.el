@@ -277,8 +277,8 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (evil-define-key 'normal 'global (kbd "{") #'backward-paragraph)
 (evil-define-key 'normal 'global (kbd "f") #'evil-find-char)
 (evil-define-key 'normal 'global (kbd "<leader>r n") #'lsp-rename)
-(evil-define-key 'normal 'global (kbd "] d") #'next-error)
-(evil-define-key 'normal 'global (kbd "[ d") #'previous-error)
+(evil-define-key 'normal 'global (kbd "] d") #'flycheck-next-error)
+(evil-define-key 'normal 'global (kbd "[ d") #'flycheck-previous-error)
 (evil-define-key
  'normal 'global (kbd "g h") #'lsp-clangd-find-other-file)
 (evil-define-key 'normal 'global (kbd "g t") nil)
@@ -288,9 +288,10 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (evil-define-key 'normal 'global (kbd "<leader>gt") #'switch-to-buffer)
 (evil-define-key 'normal 'global (kbd "g d") #'lsp-find-definition)
 (evil-define-key 'normal 'global (kbd "g r") #'lsp-find-references)
-(evil-define-key 'normal 'global (kbd "<leader> f f") #'helm-find-files)
+(evil-define-key 'normal 'global (kbd "<leader> f f") #'projectile-find-file)
 (evil-define-key 'normal 'global (kbd "<leader> f g") nil)
 (evil-define-key 'normal 'global (kbd "<leader> f g") #'deadgrep)
+(evil-define-key 'normal 'global (kbd "<leader> l i") #'lsp-ui-imenu)
 (evil-define-key 'normal 'global (kbd "C-s") #'lsp-ui-imenu)
 (evil-define-key 'normal 'global (kbd "C-e") #'lsp-ui-flycheck-list)
 (evil-define-key 'normal 'global (kbd "M-.") nil)
@@ -336,11 +337,6 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (evil-define-key 'normal 'global (kbd "<leader> p u") #'p4-update)
 ()
 
-;; (projectile-register-project-type 'zig '("build.zig")
-;;                                :project-file "build.zig"
-;;                                :compile "zig build"
-;;                                :run "zig build run"
-;;                                :test "zig test")
 
 (use-package dap-mode
              :after lsp
@@ -406,3 +402,31 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (projectile-mode +1)
 
 (require 'jai-mode "~/.emacs.d/jai-mode.el")
+(with-eval-after-load 'lsp-mode
+    (add-to-list 'lsp-language-id-configuration
+                 '(jai-mode . "jai"))
+
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-stdio-connection "jails")
+                      :activation-fn (lsp-activate-on "jai")
+                      :server-id 'jails))
+
+    (add-hook 'jai-mode-hook (lambda ()
+                               (lsp)
+                               (lsp-ui-mode)
+                               (lsp-ui-sideline-mode)))
+  )
+
+(projectile-register-project-type 'zig '("build.zig")
+                               :project-file "build.zig"
+                               :compile "zig build"
+                               :run "zig build run"
+                               :test "zig test")
+(require 'lsp-mode)
+(setq lsp-zig-zls-executable "~/zls/zig-out/bin/zls")
+
+(add-hook 'prog-mode-hook
+          (lambda ()
+          (lsp-mode))
+          (lsp-ui-mode)
+          (lsp-ui-sideline-mode))

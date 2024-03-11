@@ -2,6 +2,6 @@
     "enable_autofix":false,
     "enable_inlay_hints":true,
     "include_at_in_builtins":true,
-    "zig_lib_path":"~/zig/lib",
-    "zig_exe_path":"~/zig/zig"
+    "zig_lib_path":"/home/nobu/zig/lib",
+    "zig_exe_path":"/home/nobu/zig/zig"
 }

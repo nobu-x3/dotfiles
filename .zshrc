@@ -83,7 +83,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='nvim'
+export EDITOR='emacs'
 # else
 #   export EDITOR='mvim'
 # fi
@@ -123,6 +123,7 @@ export PATH="$HOME/Qt:$HOME/Qt/Tools/QtCreator/bin:$HOME/Qt/Tools/QtDesignStudio
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/jai_compiler/bin:$PATH"
 export PATH="$HOME/jai_compiler/Jails/bin:$PATH"
+export PATH="$HOME/Jails/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 #export VULKAN_SDK="/nix/store/nzz1vdvyp3b00gvc6hq48g2z5yml9zjx-vulkan-headers-1.3.249:$VULKAN_SDK"
 #export VULKAN_SDK="/nix/store/hrvx0baps9xhfzb2lv71di4hbqvcr7fz-vulkan-loader-1.3.249:$VULKAN_SDK"
