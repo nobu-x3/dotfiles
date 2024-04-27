@@ -19,6 +19,7 @@ require('packer').startup(function(use)
     })
     use 'tpope/vim-commentary'
     use 'Yggdroot/indentLine'
+    use 'p00f/clangd_extensions.nvim'
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use 'neovim/nvim-lspconfig'
