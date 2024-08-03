@@ -106,10 +106,10 @@ alias jai='jai-linux'
 
 #alias nvim='neovide'
 export VISUAL="nvim"
-export CC=/usr/bin/clang
-export CXX=/usr/bin/clang++
-# export CC=/usr/bin/gcc
-# export CXX=/usr/bin/g++
+# export CC=/usr/bin/clang
+# export CXX=/usr/bin/clang++
+export CC=/usr/bin/gcc
+export CXX=/usr/bin/g++
 eval $(keychain --eval --quiet id_rsa)
 # export PATH="$HOME/zig-bootstrap/out/zig-x86_64-linux-gnu-native/bin:$PATH"
 export PATH="$HOME/zig:$PATH"
