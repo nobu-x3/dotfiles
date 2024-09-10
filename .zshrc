@@ -106,10 +106,10 @@ alias jai='jai-linux'
 
 #alias nvim='neovide'
 export VISUAL="nvim"
-# export CC=/usr/bin/clang
-# export CXX=/usr/bin/clang++
-export CC=/usr/bin/gcc
-export CXX=/usr/bin/g++
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
+# export CC=/usr/bin/gcc
+# export CXX=/usr/bin/g++
 eval $(keychain --eval --quiet id_rsa)
 # export PATH="$HOME/zig-bootstrap/out/zig-x86_64-linux-gnu-native/bin:$PATH"
 export PATH="$HOME/zig:$PATH"
@@ -121,6 +121,8 @@ export PATH="$HOME/ols:$PATH"
 export ODIN_ROOT="$HOME/Odin"
 export PATH="$HOME/Qt:$HOME/Qt/Tools/QtCreator/bin:$HOME/Qt/Tools/QtDesignStudio/bin:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
+export PATH="$HOME/emacs/bin:$PATH"
+export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$HOME/jai_compiler/bin:$PATH"
 export PATH="$HOME/jai_compiler/Jails/bin:$PATH"
 export PATH="$HOME/Jails/bin:$PATH"
@@ -130,5 +132,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 #export VULKAN_SDK="/nix/store/kinq12hayd004zfwmndfif158m7hd8fp-vulkan-validation-layers-1.3.249:$VULKAN_SDK"
 #export VULKAN_SDK="/nix/store/17za1lldv8jxgfa493n5d7kjhpirx46r-vulkan-validation-layers-1.3.249-headers:$VULKAN_SDK"
 #export VULKAN_SDK="/nix/store/76zm8yzdyd2hvwrja38c0s2fngxxdbn0-vulkan-extension-layer-1.3.248:$VULKAN_SDK"
-source ~/vulkanSDK/setup-env.sh
-source ~/.p4config
+# source ~/vulkanSDK/setup-env.sh
+# source ~/.p4config

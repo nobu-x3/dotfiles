@@ -107,4 +107,5 @@ export PATH="$HOME/Odin:$PATH"
 export PATH="$HOME/ols:$PATH"
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
 export ODIN_ROOT="$HOME/Odin"
-source ~/vulkanSDK/setup-env.sh
+# source ~/vulkanSDK/setup-env.sh
+export PATH="$HOME/.emacs.d/bin:$PATH"
