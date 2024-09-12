@@ -1,8 +1,10 @@
 require('mason').setup()
-require('mason-lspconfig').setup {
-    ensure_installed = { "clangd", "lua_ls" },
-    automatic_installation = { exclude = { "clangd" } }
-}
+-- require('mason-lspconfig').setup {
+--     ensure_installed = { "clangd", "lua_ls" },
+--     automatic_installation = { exclude = { "clangd" } }
+-- }
+require('mason-lspconfig').setup()
+local lsp_config = require('lspconfig')
 local opts = { noremap = false, silent = true }
 
 local on_attach = function(client, bufnr)
@@ -25,18 +27,18 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
-    if client.server_capabilities.inlayHintProvider then
-        vim.lsp.buf.inlay_hints(bufnr, true)
-    end
+    -- if client.server_capabilities.inlayHintProvider then
+    --     vim.lsp.buf.inlay_hints(bufnr, true)
+    -- end
 end
 
-require('mason-lspconfig').setup_handlers {
-    function(server_name)
-        require("lspconfig")[server_name].setup {
-            on_attach = on_attach
-        }
-    end
-}
+-- require('mason-lspconfig').setup_handlers {
+--     function(server_name)
+--         require("lspconfig")[server_name].setup {
+--             on_attach = on_attach
+--         }
+--     end
+-- }
 
 -- LSP Diagnostics Options Setup
 local sign = function(opts)
@@ -78,3 +80,18 @@ vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+
+-- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+local servers = { 'zls', "pylsp", "clangd", "omnisharp_mono", "ols", "lua_ls" }
+for _, lsp in pairs(servers) do
+    require('lspconfig')[lsp].setup {
+        on_attach = on_attach,
+        flags = {
+            -- This will be the default in neovim 0.7+
+            debounce_text_changes = 150,
+        },
+        capabilities = capabilities,
+    }
+end
